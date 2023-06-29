@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "How I built it"
-date:   2023-06-29 15:03:15 -0600
-categories: jekyll update
+date:   2023-06-29 15:03:15 -0700
+categories: web software
 published: true
 ---
 # Welcome!
