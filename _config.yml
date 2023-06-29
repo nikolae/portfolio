@@ -28,6 +28,9 @@ url: "https://nickaroneseno.com" # the base hostname & protocol for your site, e
 github_username:  nikolae
 linkedin_username: naroneseno
 
+timezone: America/Denver
+lsi: true
+
 # Build settings
 theme: minima
 plugins:
