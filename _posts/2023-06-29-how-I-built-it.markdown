@@ -59,23 +59,36 @@ Open a new command prompt window from Start, and run `gem install jekyll bundler
 # Build it!
 We'll need a place to store our site, so go choose one now. Create an empty folder there - that will be what everything (the site, git repo, assets, etc) is stored in. From here on out, we'll be using Git Bash to do our command line kung-fu, so open that.
 
-In Git Bash, init
+In Git Bash type, 
 
-
-
-
-
-code snippets:
-
-{% highlight ruby %}
-def print_hi(name)
-  puts "Hi, #{name}"
-end
-print_hi('Tom')
-#=> prints 'Hi, Tom' to STDOUT.
+{% highlight basic %}
+git init REPO
+cd REPO
+git checkout --orphan BRANCH
 {% endhighlight %}
+where `REPO` is your remote repository name and `BRANCH` is your build branch from earlier.
+
+Now, let's make your Jekyll site. This will create the new instantiation of Jekyll in our previously navigated to directory (`.`). The `--force` flag ignores and Readme.md or other files created by GitHub. Optionally, delete everything here before running the next command.
+{% highlight basic %}
+jekyll new --skip-bundle . --force
+{% endhighlight %}
+
+Navigate to where you made the site in Windows Exporer. Open the Gemfile that Jekyll made. Add `#` to the beginning of the line that starts with gem `jekyll` to comment out this line. Now, add the github-pages gem by editing the line starting with `# gem "github-pages"`. Change this line to:
+{% highlight basic %}
+gem "github-pages", "~> GITHUB-PAGES-VERSION", group: :jekyll_plugins
+{% endhighlight %}
+Replace GITHUB-PAGES-VERSION with the latest supported version of the github-pages gem (e.g., 228). Check the version [here][gpages]. Save and close. 
+
+Going back to the Bash window, run `bundle install`. When we deploy, a different version (most likely) of Jekyll will be isntalled as a dependency of the github-pages gem that is compatible with GitHub so it can auto-build.
+
+Assuming everything has gone right, you're ready to test your site locally by running `bundle exec jekyll serve`! It can be found at `http://http://localhost:4000/`
+
+# Push it. Push it real good.
+Once you're happy with the content, don't forget to add, commit and push your files to the cloud. If you're not commiting to your build branch (please don't), make a pull request and let GitHub handle the rest!
+
 
 
 [conversational-git]: https://alanhohn.com/extras/conversational-git/
 [ruby]: https://www.ruby-lang.org/en/documentation/installation/
 [git]: https://gitforwindows.org/
+[gpages]: https://pages.github.com/versions/
