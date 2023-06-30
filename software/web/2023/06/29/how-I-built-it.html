@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>How I Built It | Nick Aroneseno’s Doings</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="How I Built It" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Welcome!" />
+<meta property="og:description" content="Welcome!" />
+<link rel="canonical" href="http://localhost:4000/software/web/2023/06/29/how-I-built-it.html" />
+<meta property="og:url" content="http://localhost:4000/software/web/2023/06/29/how-I-built-it.html" />
+<meta property="og:site_name" content="Nick Aroneseno’s Doings" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-06-29T16:03:15-06:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="How I Built It" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2023-06-29T16:03:15-06:00","datePublished":"2023-06-29T16:03:15-06:00","description":"Welcome!","headline":"How I Built It","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/software/web/2023/06/29/how-I-built-it.html"},"url":"http://localhost:4000/software/web/2023/06/29/how-I-built-it.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Nick Aroneseno&apos;s Doings" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Nick Aroneseno&#39;s Doings</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/tags/hardware.html">Hardware</a><a class="page-link" href="/tags/software.html">Software</a><a class="page-link" href="/tags/">All Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">How I Built It</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2023-06-29T16:03:15-06:00" itemprop="datePublished">Jun 29, 2023
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h1 id="welcome">Welcome!</h1>
+
+<p><img src="/assets/images/Donald_Duck.png" alt="Duck" height="250" /></p>
+
+<p>After recently being inspired to finally do something with the horde of domains I’m sitting on, today I’m going to lay out how exactly I was able to get my personal portfolio up and running with Cloudflare and Github Pages.</p>
+
+<p>This guide is for Windows.</p>
+
+<h1 id="goals">Goals:</h1>
+<ul>
+  <li>To be able to have a place to remember how I did <em>that one thing</em></li>
+  <li>To be able to showcase anything (marginally) cool I built</li>
+  <li>To be able to use markdown as a means for creating content (HTML is just <em>so 90s</em>, man)</li>
+  <li>To spend as little as possible (having monkeying with websites for 20+ years, I’m over dealing with hosting providers [for now])</li>
+  <li>To have more control over the content, formatting, and layout without installing bloat or increase attack surface</li>
+  <li>To feel smug about having a domain that has my name</li>
+</ul>
+
+<h1 id="requirements">Requirements</h1>
+<p>For this effort, I’m using a domain name and Github pages. This is optional; you can just use the URL provided by Github directly.</p>
+<ul>
+  <li>Github account</li>
+  <li>Computing device</li>
+  <li>Base understanding of Git (here’s a <a href="https://alanhohn.com/extras/conversational-git/">refresher</a>)</li>
+  <li>Some time and/or coffee</li>
+</ul>
+
+<h1 id="ruby">Ruby</h1>
+<p>Download and install <a href="https://www.ruby-lang.org/en/documentation/installation/">ruby</a>.</p>
+
+<p>When it’s done installing, make sure to check the <code class="language-plaintext highlighter-rouge">ridk</code> box.
+<img src="/assets/images/guides/ruby_install.jpg" alt="RubyInstall" /></p>
+
+<p>This opens a new prompt. Enter in options <code class="language-plaintext highlighter-rouge">1,3</code></p>
+
+<p><img src="/assets/images/guides/ruby_install2.jpg" alt="RubyInstall2" height="250" /></p>
+
+<p>Finally, open a new command prompt window from Start, and type <code class="language-plaintext highlighter-rouge">ridk enable</code>.</p>
+
+<h1 id="bundler">Bundler</h1>
+<p>Open a <em>Powershell</em> window. Run <code class="language-plaintext highlighter-rouge">gem install bundler</code>. This is successful if you see the “1 gem installed” message</p>
+
+<h1 id="git">Git</h1>
+<p>If you don’t already have it installed, install <a href="https://gitforwindows.org/">Git</a>.</p>
+
+<p>Also create a new repository on GitHub on your account. Once created, go to that repo and click on Settings (1), then Pages on the left (2). Here, you need to select which branch you want to auto-build from (3) with an optional embedded directory. In mine, that’s <code class="language-plaintext highlighter-rouge">prod</code>. Optionally, type in your domain name (4).
+<img src="/assets/images/guides/github_pages.jpg" alt="GitHubPages" /></p>
+
+<p>If you are, using your DNS provider, enure <code class="language-plaintext highlighter-rouge">www</code> is pointing to your domain apex (@). Then, create a <code class="language-plaintext highlighter-rouge">CNAME</code> record to <code class="language-plaintext highlighter-rouge">&lt;USER&gt;.github.io</code>, where <code class="language-plaintext highlighter-rouge">&lt;USER&gt;</code> is your github username. Give it up to an hour to propagate, then come back and check the settings to ensure it linked correctly.</p>
+
+<h1 id="jekyll">Jekyll</h1>
+<p>Open a new command prompt window from Start, and run <code class="language-plaintext highlighter-rouge">gem install jekyll bundler</code>. When it’s done, run <code class="language-plaintext highlighter-rouge">jekyll -v</code> to verify it was installed properly (you’ll see a version).
+<img src="/assets/images/guides/jekyll.jpg" alt="jekyllv" /></p>
+
+<h1 id="build-it">Build it!</h1>
+<p>We’ll need a place to store our site, so go choose one now. Create an empty folder there - that will be what everything (the site, git repo, assets, etc) is stored in. From here on out, we’ll be using Git Bash to do our command line kung-fu, so open that.</p>
+
+<p>In Git Bash type,</p>
+
+<figure class="highlight"><pre><code class="language-basic" data-lang="basic">git init REPO
+cd REPO
+git checkout --orphan BRANCH</code></pre></figure>
+
+<p>where <code class="language-plaintext highlighter-rouge">REPO</code> is your remote repository name and <code class="language-plaintext highlighter-rouge">BRANCH</code> is your build branch from earlier.</p>
+
+<p>Now, let’s make your Jekyll site. This will create the new instantiation of Jekyll in our previously navigated to directory (<code class="language-plaintext highlighter-rouge">.</code>). The <code class="language-plaintext highlighter-rouge">--force</code> flag ignores and Readme.md or other files created by GitHub. Optionally, delete everything here before running the next command.</p>
+
+<figure class="highlight"><pre><code class="language-basic" data-lang="basic">jekyll new --skip-bundle . --force</code></pre></figure>
+
+<p>Navigate to where you made the site in Windows Exporer. Open the Gemfile that Jekyll made. Add <code class="language-plaintext highlighter-rouge">#</code> to the beginning of the line that starts with gem <code class="language-plaintext highlighter-rouge">jekyll</code> to comment out this line. Now, add the github-pages gem by editing the line starting with <code class="language-plaintext highlighter-rouge"># gem "github-pages"</code>. Change this line to:</p>
+
+<figure class="highlight"><pre><code class="language-basic" data-lang="basic">gem "github-pages", "~&gt; GITHUB-PAGES-VERSION", group: :jekyll_plugins</code></pre></figure>
+
+<p>Replace GITHUB-PAGES-VERSION with the latest supported version of the github-pages gem (e.g., 228). Check the version <a href="https://pages.github.com/versions/">here</a>. Save and close.</p>
+
+<p>Going back to the Bash window, run <code class="language-plaintext highlighter-rouge">bundle install</code>. When we deploy, a different version (most likely) of Jekyll will be isntalled as a dependency of the github-pages gem that is compatible with GitHub so it can auto-build.</p>
+
+<p>Assuming everything has gone right, you’re ready to test your site locally by running <code class="language-plaintext highlighter-rouge">bundle exec jekyll serve</code>! It can be found at <code class="language-plaintext highlighter-rouge">http://http://localhost:4000/</code></p>
+
+<h1 id="push-it-push-it-real-good">Push it. Push it real good.</h1>
+<p>Once you’re happy with the content, don’t forget to add, commit and push your files to the cloud. If you’re not commiting to your build branch (please don’t), make a pull request and let GitHub handle the rest!</p>
+
+<h1 id="references">References</h1>
+<p>The info for this post was concatenated from the following sources:</p>
+<ul>
+  <li><a href="https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/creating-a-github-pages-site-with-jekyll">https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/creating-a-github-pages-site-with-jekyll</a></li>
+  <li><a href="https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/testing-your-github-pages-site-locally-with-jekyll">https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/testing-your-github-pages-site-locally-with-jekyll</a></li>
+  <li><a href="https://jekyllrb.com/docs/configuration/default/">https://jekyllrb.com/docs/configuration/default/</a></li>
+  <li><a href="https://www.geeksforgeeks.org/how-to-install-ruby-bundler-on-windows/#">https://www.geeksforgeeks.org/how-to-install-ruby-bundler-on-windows/#</a></li>
+  <li><a href="https://jekyllrb.com/docs/installation/windows/">https://jekyllrb.com/docs/installation/windows/</a></li>
+</ul>
+
+<hr />
+<p>
+<h4>Archive</h4>
+
+
+
+  
+  
+  <a href="/tags/web.html"><code class="highligher-rouge"><nobr>web</nobr></code></a>
+
+  
+  
+  <a href="/tags/software.html"><code class="highligher-rouge"><nobr>software</nobr></code></a>
+
+  
+  
+  <a href="/tags/jekyll.html"><code class="highligher-rouge"><nobr>jekyll</nobr></code></a>
+
+  
+  
+  <a href="/tags/DNS.html"><code class="highligher-rouge"><nobr>DNS</nobr></code></a>
+
+</p>
+
+
+  </div><a class="u-url" href="/software/web/2023/06/29/how-I-built-it.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Nick Aroneseno&#39;s Doings</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Nick Aroneseno&#39;s Doings</li><li><a class="u-email" href="mailto:admin (at) nickaroneseno (dot) com">admin (at) nickaroneseno (dot) com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/nikolae"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">nikolae</span></a></li><li><a href="https://www.linkedin.com/in/naroneseno"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#linkedin"></use></svg> <span class="username">naroneseno</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>A personal &#39;how did I do this that one time&#39; archive, portfolio, and personal web presence.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
