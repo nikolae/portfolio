@@ -1,8 +1,9 @@
 ---
 layout: post
-title:  "How I built it"
+title:  "How I Built It"
 date:   2023-06-29 15:03:15 -0700
-categories: web software
+categories: software web
+tags: web software jekyll DNS
 published: true
 ---
 # Welcome!
@@ -87,6 +88,29 @@ Assuming everything has gone right, you're ready to test your site locally by ru
 Once you're happy with the content, don't forget to add, commit and push your files to the cloud. If you're not commiting to your build branch (please don't), make a pull request and let GitHub handle the rest!
 
 
+# References
+The info for this post was concatenated from the following sources:
+* [https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/creating-a-github-pages-site-with-jekyll](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/creating-a-github-pages-site-with-jekyll)
+* [https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/testing-your-github-pages-site-locally-with-jekyll](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/testing-your-github-pages-site-locally-with-jekyll)
+* [https://jekyllrb.com/docs/configuration/default/](https://jekyllrb.com/docs/configuration/default/)
+* [https://www.geeksforgeeks.org/how-to-install-ruby-bundler-on-windows/#](https://www.geeksforgeeks.org/how-to-install-ruby-bundler-on-windows/#)
+* [https://jekyllrb.com/docs/installation/windows/](https://jekyllrb.com/docs/installation/windows/)
+
+---
+<p>
+<h4>Archive</h4>
+{% capture temptags %}
+  {% for tag in site.tags %}
+    {{ tag[1].size | plus: 1000 }}#{{ tag[0] }}#{{ tag[1].size }}
+  {% endfor %}
+{% endcapture %}
+{% assign sortedtemptags = temptags | split:' ' | sort | reverse %}
+{% for temptag in sortedtemptags %}
+  {% assign tagitems = temptag | split: '#' %}
+  {% capture tagname %}{{ tagitems[1] }}{% endcapture %}
+  <a href="/tags/{{ tagname }}.html"><code class="highligher-rouge"><nobr>{{ tagname }}</nobr></code></a>
+{% endfor %}
+</p>
 
 [conversational-git]: https://alanhohn.com/extras/conversational-git/
 [ruby]: https://www.ruby-lang.org/en/documentation/installation/
