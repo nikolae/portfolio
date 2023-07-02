@@ -1,6 +1,7 @@
 ---
-layout: post
+layout: page
 title:  "How I Built It"
+teaser: "In which I go off the Rails"
 date:   2023-06-29 15:03:15 -0700
 categories: software web
 tags: web software jekyll DNS
@@ -62,7 +63,7 @@ We'll need a place to store our site, so go choose one now. Create an empty fold
 
 In Git Bash type, 
 
-{% highlight basic %}
+{% highlight sh %}
 git init REPO
 cd REPO
 git checkout --orphan BRANCH
@@ -70,12 +71,12 @@ git checkout --orphan BRANCH
 where `REPO` is your remote repository name and `BRANCH` is your build branch from earlier.
 
 Now, let's make your Jekyll site. This will create the new instantiation of Jekyll in our previously navigated to directory (`.`). The `--force` flag ignores and Readme.md or other files created by GitHub. Optionally, delete everything here before running the next command.
-{% highlight basic %}
+{% highlight sh %}
 jekyll new --skip-bundle . --force
 {% endhighlight %}
 
 Navigate to where you made the site in Windows Exporer. Open the Gemfile that Jekyll made. Add `#` to the beginning of the line that starts with gem `jekyll` to comment out this line. Now, add the github-pages gem by editing the line starting with `# gem "github-pages"`. Change this line to:
-{% highlight basic %}
+{% highlight sh %}
 gem "github-pages", "~> GITHUB-PAGES-VERSION", group: :jekyll_plugins
 {% endhighlight %}
 Replace GITHUB-PAGES-VERSION with the latest supported version of the github-pages gem (e.g., 228). Check the version [here][gpages]. Save and close. 
@@ -97,20 +98,7 @@ The info for this post was concatenated from the following sources:
 * [https://jekyllrb.com/docs/installation/windows/](https://jekyllrb.com/docs/installation/windows/)
 
 ---
-<p>
-<h4>Archive</h4>
-{% capture temptags %}
-  {% for tag in site.tags %}
-    {{ tag[1].size | plus: 1000 }}#{{ tag[0] }}#{{ tag[1].size }}
-  {% endfor %}
-{% endcapture %}
-{% assign sortedtemptags = temptags | split:' ' | sort | reverse %}
-{% for temptag in sortedtemptags %}
-  {% assign tagitems = temptag | split: '#' %}
-  {% capture tagname %}{{ tagitems[1] }}{% endcapture %}
-  <a href="/tags/{{ tagname }}.html"><code class="highligher-rouge"><nobr>{{ tagname }}</nobr></code></a>
-{% endfor %}
-</p>
+
 
 [conversational-git]: https://alanhohn.com/extras/conversational-git/
 [ruby]: https://www.ruby-lang.org/en/documentation/installation/
