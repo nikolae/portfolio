@@ -1,4 +1,88 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-06-29T23:40:33-06:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Nick Aroneseno’s Doings</title><subtitle>A personal &apos;how did I do this that one time&apos; archive, portfolio, and personal web presence.</subtitle><entry><title type="html">How I Built It</title><link href="http://localhost:4000/software/web/2023/06/29/how-I-built-it.html" rel="alternate" type="text/html" title="How I Built It" /><published>2023-06-29T16:03:15-06:00</published><updated>2023-06-29T16:03:15-06:00</updated><id>http://localhost:4000/software/web/2023/06/29/how-I-built-it</id><content type="html" xml:base="http://localhost:4000/software/web/2023/06/29/how-I-built-it.html">&lt;h1 id=&quot;welcome&quot;&gt;Welcome!&lt;/h1&gt;
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://localhost:4000/assets/xslt/rss.xslt" ?>
+<?xml-stylesheet type="text/css" href="http://localhost:4000/assets/css/rss.css" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Nick Aroneseno: A technical journey</title>
+		<description>»A personal &lt;em&gt;how did I do this that one time&lt;/em&gt; archive, portfolio, and personal web presence.</description>
+		<link>http://localhost:4000/</link>
+		<atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+		
+			<item>
+				<title>Creating High-Speed Electrical Analysis for Energy Research</title>
+				<link>http://localhost:4000/electrical/power/high-speed-electrical-analysis/</link>
+				<pubDate>Sat, 01 Jul 2023 23:55:01 -0600</pubDate>
+				<description>&lt;p&gt;&lt;em&gt;The text that follows is a slightly reworded (taking out the marketing perspective and verbiage) version of a paper I initially wrote back in 2014 for the company I was working for at the time. This paper was originally published in &lt;a href=&quot;https://www.digitalengineering247.com/&quot;&gt;Digital Engineering 24/7&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;During 2010, the contract engineering company I was working for at the time was invited to propose a solution to the National Renewable Energy Laboratory (NREL) for distributed power monitoring within the newly designed Energy Systems Integration Facility (ESIF).&lt;/p&gt;
+
+&lt;p&gt;NREL scientists and engineers research renewable energy and energy-efficient technologies, often partnering with private industry to deliver these ideas to the general public. NREL designed the ESIF to facilitate groundbreaking research in areas such as solar and wind, power grid planning and operations, energy storage, building technologies, fuel cells, and advanced vehicles. Each lab at the 182,500 square foot facility is designed and instrumented to foster research on all aspects of energy systems integration. Some of the unique capabilities of these labs include the ability to perform hardware-in-the-loop (HIL) simulations at megawatt-scale power, petascale computing at the High-Performance Computing Data Center, and the unique Research Electrical Distribution Bus (REDB). Monitored with CompactRIO (an embedded real time data acquisition platform and controller), REDB is the ultimate power integration circuit. It consists of two AC and two DC ring buses that interconnect multiple sources of energy across the facility, enabling NREL to work with industry to provide plug-and-play testing at real-world grid-scale levels.&lt;/p&gt;
+
+&lt;p&gt;Since the ESIF is intended for researching various forms of energy integration, NREL researchers needed a system for monitoring power usage and controlling safety systems for each experiment or laboratory on a facility-wide scale. Monitoring AC and DC power loads can provide researchers with power usage information for their individual experiments and allow facility managers to view the total energy usage on a facility-wide or laboratory-by-laboratory basis. An additional benefit is the safety monitoring for laboratories in the event of dangerous electrical conditions caused by experiments, ultimately protecting the researchers and facility equipment.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/NREL_REDB.jpg&quot; alt=&quot;REDB&quot; /&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;The REDB is the electrical backbone interconnecting many of the laboratories at ESIF. This state-of-the-art facility will enable NREL and industry to work together to develop and evaluate their individual technologies.
+&lt;em&gt;Image: &lt;a href=&quot;https://nrel.gov&quot;&gt;NREL&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Researchers needed a power monitor they could configure on an individual experiment basis for multiphase AC and DC measurements. They also needed a power meter they could use to configure the meter to mimic multiple types of circuit breakers while analyzing power characteristics such as real power, reactive power and energy. To enable live analysis of complex energy experiments, researchers required high-speed and high-resolution data (16-bit, 50/100KS/s+). Furthermore, the power monitor needed to communicate to various third-party human machine interfaces (HMIs) and programmable logic controller (PLC) devices from Wonderware and Siemens. A power monitor capable of providing all of these features did not exist in the market. As a result, my company was hired as a subcontractor to NREL to develop such a device for the ESIF.&lt;/p&gt;
+
+&lt;h3 id=&quot;solution-details&quot;&gt;Solution Details&lt;/h3&gt;
+
+&lt;p&gt;I provided software images for more than 70 (72 I believe) CompactRIO units installed within electrical panels throughout the ESIF. The solution is responsible for monitoring electrical conditioning components between the ESIF’s power sources (120V, 240V, 480V, and 600V AC plus 500V and 1,000V DC on 250A and 1,600A busses, with 2,500A in the future) and the laboratory power connections. As a result, any powered device under test or equipment used for testing in the lab was actively monitored by CompactRIO, both from a power consumption and analysis standpoint, as well as for safety monitoring. Voltage transformers bring voltage levels into a range compatible with the NI C Series devices and protect equipment from excess voltage.&lt;/p&gt;
+
+&lt;p&gt;The team considered using traditional PLCs during preliminary phases of the project; however, it became apparent that the system performance requirements, including the high sample rate and real-time processing, would be too much for this traditional form of hardware. Instead, we selected the NI system design platform, including CompactRIO hardware and LabVIEW software because of the flexibility and deterministic timing capabilities of CompactRIO and the diverse offering of high-performance I/O modules.&lt;/p&gt;
+
+&lt;p&gt;The solution used systems based on the NI cRIO-9024 embedded real-time controller with the NI cRIO-9118 backplane and the NI cRIO-9082 controller for this project. The analog input cards used were 9215 modules. To monitor, analyze, alarm, and communicate, the CompactRIO devices were programmed using the LabVIEW Real-Time and LabVIEW FPGA (field-programmable gate array) development modules. This allowed the system to deterministically perform each of these functions in parallel threads. With data being acquired at 51.2KS/s and 100KS/s, I derived a solution from the CompactRIO Waveform Reference Library to efficiently transfer high-speed data from the FPGA (for acquisition) to the real-time application for communications and action processing.&lt;/p&gt;
+
+&lt;p&gt;Several components of this NI-based solution were critical to the project’s success. First, the LabVIEW FPGA Module made it possible to implement a system responsible for identifying unsafe electrical conditions and reporting these conditions back to the control systems. Second, simultaneously sampling data across input channels using the NI 9215 analog input module, combined with the accuracy of the NI 9467 GPS module, made timing synchronization between all 72 CompactRIO devices accurate within 100 ns. This was especially beneficial when correlating data from multiple laboratories across the entire 183,000 square foot facility, where testing areas are separated and monitored by different CompactRIO devices. Third, with the processing power of the CompactRIO real-time controllers (800MHz and 1.33GHz for the 9024 and 9118 respecitvely), the controllers acquired and processed 28 channels of data each at 51,200Hz while managing other functions, such as alarm monitoring and TCP/IP and Modbus communications.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/NREL_powerbus.jpg&quot; alt=&quot;REDB Hardware&quot; /&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;The REDB for AC and DC testing at the new ESIF, which includes CompactRIO hardware is pictured.
+&lt;em&gt;Image: &lt;a href=&quot;https://nrel.gov&quot;&gt;NREL&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;I ended up developing and compiling more than seven custom FPGA bitfiles for this project. The individual compile time for each FPGA application averaged 1.5 hours. Furthermore, prior to releasing final versions of the FGPA applications, several preliminary compilations were necessary to account for project scope changes and shifting requirements, as with most consulting projects. To counter this, I leveraged the LabVIEW FPGA Compile Cloud Service to compile the FPGA applications, which saved valuable developer time on the project. With the LabVIEW FPGA Compile Cloud Service, I was able to push multiple FPGA builds to an external server managed by NI, compile code in parallel, free up developer machines for other tasks, and drastically shorten compile times (2.6 to 5.3 times shorter).&lt;/p&gt;
+
+&lt;p&gt;With each of the bitfiles compiled, each and every cRIO of the same family could be reconfigured on the fly to load in different functionality and dynamically adjust to NREL’s research needs.&lt;/p&gt;
+
+&lt;h3 id=&quot;solution-benefits&quot;&gt;Solution Benefits&lt;/h3&gt;
+
+&lt;p&gt;Overall, the my solution delivered the following benefits:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;High-speed data acquisition, which provides a more accurate representation of the effects individual experiments may have on the grid&lt;/li&gt;
+  &lt;li&gt;Correlated data from synchronized systems distributed throughout the ESIF, enabling researchers to better understand multilab experiments and characterize the building’s electrical profile&lt;/li&gt;
+  &lt;li&gt;Easily reconfigurable virtual power meters and CompactRIO systems that can be configured as AC or DC devices without recompiling or reimaging the controllers&lt;/li&gt;
+  &lt;li&gt;A transparent and flexible architecture for future expansion, including features to send data to third-party systems through standard communication protocols such as TCP/IP and Modbus&lt;/li&gt;
+  &lt;li&gt;Safe emergency-stop monitoring, implemented in dedicated FPGA code&lt;/li&gt;
+  &lt;li&gt;Dynamically configurable analysis algorithms (virtual metering objects), enabled by the deterministic real-time processing capability of CompactRIO hardware for analyzing electrical characteristics for safety violations and in simulating complex circuit breaker logic&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;project-conclusions&quot;&gt;Project Conclusions&lt;/h3&gt;
+
+&lt;p&gt;Using CompactRIO and LabVIEW, I quickly developed a prototype and responded to customer questions and expectations for a distributed power monitoring solution. Changes in scope and requirements as a result of discoveries made mid-project had minimal effect on the schedule because of the shortened development time achieved using the graphical system design approach.&lt;/p&gt;
+
+&lt;p&gt;With the CompactRIO platform and the LabVIEW Real-Time Module, I created the most efficient real-time system possible, which performed considerably more processing on the distributed controllers when compared to traditional PLCs.&lt;/p&gt;
+
+&lt;p&gt;By using a complete top-to-bottom NI solution, I aggressively executed the project, leading to a solution for NREL that was ahead of schedule and delivered under budget.&lt;/p&gt;
+
+&lt;h3 id=&quot;references&quot;&gt;References&lt;/h3&gt;
+&lt;p&gt;The original paper was published here:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.digitalengineering247.com/article/creating-high-speed-electrical-analysis-for-energy-research/&quot;&gt;https://www.digitalengineering247.com/article/creating-high-speed-electrical-analysis-for-energy-research/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+				<guid isPermaLink="true">http://localhost:4000/electrical/power/high-speed-electrical-analysis/</guid>
+			</item>
+		
+			<item>
+				<title>How I Built It</title>
+				<link>http://localhost:4000/software/web/how-I-built-it/</link>
+				<pubDate>Thu, 29 Jun 2023 16:03:15 -0600</pubDate>
+				<description>&lt;h1 id=&quot;welcome&quot;&gt;Welcome!&lt;/h1&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/Donald_Duck.png&quot; alt=&quot;Duck&quot; height=&quot;250&quot; /&gt;&lt;/p&gt;
 
@@ -57,19 +141,19 @@
 
 &lt;p&gt;In Git Bash type,&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-basic&quot; data-lang=&quot;basic&quot;&gt;git init REPO
-cd REPO
-git checkout --orphan BRANCH&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;git init REPO
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;REPO
+git checkout &lt;span class=&quot;nt&quot;&gt;--orphan&lt;/span&gt; BRANCH&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;where &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;REPO&lt;/code&gt; is your remote repository name and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;BRANCH&lt;/code&gt; is your build branch from earlier.&lt;/p&gt;
 
 &lt;p&gt;Now, let’s make your Jekyll site. This will create the new instantiation of Jekyll in our previously navigated to directory (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.&lt;/code&gt;). The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--force&lt;/code&gt; flag ignores and Readme.md or other files created by GitHub. Optionally, delete everything here before running the next command.&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-basic&quot; data-lang=&quot;basic&quot;&gt;jekyll new --skip-bundle . --force&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;jekyll new &lt;span class=&quot;nt&quot;&gt;--skip-bundle&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--force&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Navigate to where you made the site in Windows Exporer. Open the Gemfile that Jekyll made. Add &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#&lt;/code&gt; to the beginning of the line that starts with gem &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jekyll&lt;/code&gt; to comment out this line. Now, add the github-pages gem by editing the line starting with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# gem &quot;github-pages&quot;&lt;/code&gt;. Change this line to:&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-basic&quot; data-lang=&quot;basic&quot;&gt;gem &quot;github-pages&quot;, &quot;~&amp;gt; GITHUB-PAGES-VERSION&quot;, group: :jekyll_plugins&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;gem &lt;span class=&quot;s2&quot;&gt;&quot;github-pages&quot;&lt;/span&gt;, &lt;span class=&quot;s2&quot;&gt;&quot;~&amp;gt; GITHUB-PAGES-VERSION&quot;&lt;/span&gt;, group: :jekyll_plugins&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Replace GITHUB-PAGES-VERSION with the latest supported version of the github-pages gem (e.g., 228). Check the version &lt;a href=&quot;https://pages.github.com/versions/&quot;&gt;here&lt;/a&gt;. Save and close.&lt;/p&gt;
 
@@ -91,25 +175,10 @@ git checkout --orphan BRANCH&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 &lt;/ul&gt;
 
 &lt;hr /&gt;
-&lt;p&gt;
-&lt;h4&gt;Archive&lt;/h4&gt;
 
-
-
-  
-  
-  &lt;a href=&quot;/tags/web.html&quot;&gt;&lt;code class=&quot;highligher-rouge&quot;&gt;&lt;nobr&gt;web&lt;/nobr&gt;&lt;/code&gt;&lt;/a&gt;
-
-  
-  
-  &lt;a href=&quot;/tags/software.html&quot;&gt;&lt;code class=&quot;highligher-rouge&quot;&gt;&lt;nobr&gt;software&lt;/nobr&gt;&lt;/code&gt;&lt;/a&gt;
-
-  
-  
-  &lt;a href=&quot;/tags/jekyll.html&quot;&gt;&lt;code class=&quot;highligher-rouge&quot;&gt;&lt;nobr&gt;jekyll&lt;/nobr&gt;&lt;/code&gt;&lt;/a&gt;
-
-  
-  
-  &lt;a href=&quot;/tags/DNS.html&quot;&gt;&lt;code class=&quot;highligher-rouge&quot;&gt;&lt;nobr&gt;DNS&lt;/nobr&gt;&lt;/code&gt;&lt;/a&gt;
-
-&lt;/p&gt;</content><author><name></name></author><category term="software" /><category term="web" /><category term="web" /><category term="software" /><category term="jekyll" /><category term="DNS" /><summary type="html">Welcome!</summary></entry></feed>
+</description>
+				<guid isPermaLink="true">http://localhost:4000/software/web/how-I-built-it/</guid>
+			</item>
+		
+	</channel>
+</rss>
