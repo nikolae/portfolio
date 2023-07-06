@@ -14,7 +14,7 @@ title: "Nick Aroneseno: A technical journey"
 slogan: 'A personal archive'
 
 # The description is used on homepage and in the footer to quickly describe your website. Use a maximum of 150 characters for SEO-purposes.
-description: '»A personal <em>how did I do this that one time</em> archive, portfolio, and personal web presence.'
+description: 'A personal <em>how did I do this that one time</em> archive, portfolio, and personal web presence.'
 
 # The credits show up in the includes/_footer.html – It would be nice of you to leave a link to Phlow or Feeling Responsive as a thank you :)
 credits: '<p>A personal <em>how did I do this that one time</em> archive, portfolio, and personal web presence. © 2023 Nick Aroneseno</p>' #&hearts;

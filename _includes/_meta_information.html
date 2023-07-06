@@ -14,7 +14,8 @@
 
 				{% if page.categories != empty %}<span class="icon-archive pr20"> {{ page.categories | join: ' · ' | upcase }}{% endif %}</span>
 				<br />
-				<span class="pr20">{% for tag in page.tags %}<span class="icon-price-tag pr10"> {{tag}}</span> {% endfor %}</span>
+				<!-- This is where tags are generated. Add custom link to the tag page showing all articles by that specific tag. -->
+				<span class="pr20">{% for tag in page.tags %}{% assign taglink = tag | append: ".html" %}<span class="icon-price-tag pr10"> <a href="{{ site.url }}{{ site.baseurl }}/tags/{{taglink}}">{{tag}}</a></span> {% endfor %}</span>
 			</p>
 
 			{% if page.collection == "posts" %}
