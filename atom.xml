@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 	<id>https://nickaroneseno.com/</id>
 	<title>Nick Aroneseno: A technical journey</title>
-	<updated>2023-07-07T11:45:00-06:00</updated>
+	<updated>2023-07-07T11:50:24-06:00</updated>
 
 	<subtitle>A personal &lt;em&gt;how did I do this that one time&lt;/em&gt; archive, portfolio, and personal web presence.</subtitle>
 
@@ -283,8 +283,11 @@
 &lt;h3 id=&quot;references&quot;&gt;References&lt;/h3&gt;
 &lt;p&gt;The original paper was published here:&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.digitalengineering247.com/article/creating-high-speed-electrical-analysis-for-energy-research/&quot;&gt;https://www.digitalengineering247.com/article/creating-high-speed-electrical-analysis-for-energy-research/&lt;/a&gt;
-Further technical reading:&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.digitalengineering247.com/article/creating-high-speed-electrical-analysis-for-energy-research/&quot;&gt;https://www.digitalengineering247.com/article/creating-high-speed-electrical-analysis-for-energy-research/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Further technical reading:&lt;/p&gt;
+&lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.nrel.gov/grid/assets/pdfs/second_grid_sim_shirazi.pdf&quot;&gt;https://www.nrel.gov/grid/assets/pdfs/second_grid_sim_shirazi.pdf&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.nrel.gov/grid/assets/pdfs/gridsim-d111-nrel-esif-and-phil.pdf&quot;&gt;https://www.nrel.gov/grid/assets/pdfs/gridsim-d111-nrel-esif-and-phil.pdf&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
