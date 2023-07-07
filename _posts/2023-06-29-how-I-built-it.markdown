@@ -1,15 +1,15 @@
 ---
 layout: page
 title:  "How I Built It"
-teaser: "In which I go off the Rails"
+teaser: "In which I go off the 'Rails'"
 date:   2023-06-29 15:03:15 -0700
 categories: software web
-tags: web software jekyll DNS
+tags: web software jekyll DNS guides
 published: true
 ---
 # Welcome!
 
-![Duck](/assets/images/Donald_Duck.png){: height="250" }
+<!-- ![Duck](/assets/images/Donald_Duck.png){: height="250" } -->
 
 After recently being inspired to finally do something with the horde of domains I'm sitting on, today I'm going to lay out how exactly I was able to get my personal portfolio up and running with Cloudflare and Github Pages. 
 
@@ -75,18 +75,18 @@ Now, let's make your Jekyll site. This will create the new instantiation of Jeky
 jekyll new --skip-bundle . --force
 {% endhighlight %}
 
-Navigate to where you made the site in Windows Exporer. Open the Gemfile that Jekyll made. Add `#` to the beginning of the line that starts with gem `jekyll` to comment out this line. Now, add the github-pages gem by editing the line starting with `# gem "github-pages"`. Change this line to:
+Navigate to where you made the site in Windows Explorer. Open the Gemfile that Jekyll made. Add `#` to the beginning of the line that starts with gem `jekyll` to comment out this line. Now, add the github-pages gem by editing the line starting with `# gem "github-pages"`. Change this line to:
 {% highlight sh %}
 gem "github-pages", "~> GITHUB-PAGES-VERSION", group: :jekyll_plugins
 {% endhighlight %}
 Replace GITHUB-PAGES-VERSION with the latest supported version of the github-pages gem (e.g., 228). Check the version [here][gpages]. Save and close. 
 
-Going back to the Bash window, run `bundle install`. When we deploy, a different version (most likely) of Jekyll will be isntalled as a dependency of the github-pages gem that is compatible with GitHub so it can auto-build.
+Going back to the Bash window, run `bundle install`. When we deploy, a different version (most likely) of Jekyll will be installed as a dependency of the github-pages gem that is compatible with GitHub so it can auto-build.
 
 Assuming everything has gone right, you're ready to test your site locally by running `bundle exec jekyll serve`! It can be found at `http://http://localhost:4000/`
 
 # Push it. Push it real good.
-Once you're happy with the content, don't forget to add, commit and push your files to the cloud. If you're not commiting to your build branch (please don't), make a pull request and let GitHub handle the rest!
+Once you're happy with the content, don't forget to add, commit and push your files to the cloud. If you're not committing to your build branch (please don't), make a pull request and let GitHub handle the rest!
 
 
 # References

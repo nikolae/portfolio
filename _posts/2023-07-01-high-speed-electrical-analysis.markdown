@@ -34,11 +34,15 @@ The team considered using traditional PLCs during preliminary phases of the proj
 
 The solution used systems based on the NI cRIO-9024 embedded real-time controller with the NI cRIO-9118 backplane and the NI cRIO-9082 controller for this project. The analog input cards used were 9215 modules. To monitor, analyze, alarm, and communicate, the CompactRIO devices were programmed using the LabVIEW Real-Time and LabVIEW FPGA (field-programmable gate array) development modules. This allowed the system to deterministically perform each of these functions in parallel threads. With data being acquired at 51.2KS/s and 100KS/s, I derived a solution from the CompactRIO Waveform Reference Library to efficiently transfer high-speed data from the FPGA (for acquisition) to the real-time application for communications and action processing.
 
-Several components of this NI-based solution were critical to the project's success. First, the LabVIEW FPGA Module made it possible to implement a system responsible for identifying unsafe electrical conditions and reporting these conditions back to the control systems. Second, simultaneously sampling data across input channels using the NI 9215 analog input module, combined with the accuracy of the NI 9467 GPS module, made timing synchronization between all 72 CompactRIO devices accurate within 100 ns. This was especially beneficial when correlating data from multiple laboratories across the entire 183,000 square foot facility, where testing areas are separated and monitored by different CompactRIO devices. Third, with the processing power of the CompactRIO real-time controllers (800MHz and 1.33GHz for the 9024 and 9118 respecitvely), the controllers acquired and processed 28 channels of data each at 51,200Hz while managing other functions, such as alarm monitoring and TCP/IP and Modbus communications.
+Several components of this NI-based solution were critical to the project's success. First, the LabVIEW FPGA Module made it possible to implement a system responsible for identifying unsafe electrical conditions and reporting these conditions back to the control systems. Second, simultaneously sampling data across input channels using the NI 9215 analog input module, combined with the accuracy of the NI 9467 GPS module, made timing synchronization between all 72 CompactRIO devices accurate within 100 ns. This was especially beneficial when correlating data from multiple laboratories across the entire 183,000 square foot facility, where testing areas are separated and monitored by different CompactRIO devices. Third, with the processing power of the CompactRIO real-time controllers (800MHz and 1.33GHz for the 9024 and 9118 respectively), the controllers acquired and processed 28 channels of data each at 51,200Hz while managing other functions, such as alarm monitoring and TCP/IP and Modbus communications.
 
 ![REDB Hardware](/assets/images/posts/NREL_powerbus.jpg)
->The REDB for AC and DC testing at the new ESIF, which includes CompactRIO hardware is pictured.
+>The REDB for DC testing at the new ESIF, which includes CompactRIO hardware is pictured.
 _Image: [NREL](https://nrel.gov)_
+
+![REDB AC Hardware](/assets/images/posts/NREL_REDB_AC.jpg)
+>The REDB for AC testing.
+_Image: [NREL](https://www.nrel.gov/grid/assets/pdfs/second_grid_sim_shirazi.pdf)_
 
 I ended up developing and compiling more than seven custom FPGA bitfiles for this project. The individual compile time for each FPGA application averaged 1.5 hours. Furthermore, prior to releasing final versions of the FGPA applications, several preliminary compilations were necessary to account for project scope changes and shifting requirements, as with most consulting projects. To counter this, I leveraged the LabVIEW FPGA Compile Cloud Service to compile the FPGA applications, which saved valuable developer time on the project. With the LabVIEW FPGA Compile Cloud Service, I was able to push multiple FPGA builds to an external server managed by NI, compile code in parallel, free up developer machines for other tasks, and drastically shorten compile times (2.6 to 5.3 times shorter).
 
@@ -49,8 +53,8 @@ With each of the bitfiles compiled, each and every cRIO of the same family could
 Overall, the my solution delivered the following benefits:
 
 -   High-speed data acquisition, which provides a more accurate representation of the effects individual experiments may have on the grid
--   Correlated data from synchronized systems distributed throughout the ESIF, enabling researchers to better understand multilab experiments and characterize the building's electrical profile
--   Easily reconfigurable virtual power meters and CompactRIO systems that can be configured as AC or DC devices without recompiling or reimaging the controllers
+-   Correlated data from synchronized systems distributed throughout the ESIF, enabling researchers to better understand multi-lab experiments and characterize the building's electrical profile
+-   Easily reconfigurable virtual power meters and CompactRIO systems that can be configured as AC or DC devices without recompiling or re-imaging the controllers
 -   A transparent and flexible architecture for future expansion, including features to send data to third-party systems through standard communication protocols such as TCP/IP and Modbus
 -   Safe emergency-stop monitoring, implemented in dedicated FPGA code
 -   Dynamically configurable analysis algorithms (virtual metering objects), enabled by the deterministic real-time processing capability of CompactRIO hardware for analyzing electrical characteristics for safety violations and in simulating complex circuit breaker logic
@@ -67,3 +71,7 @@ By using a complete top-to-bottom NI solution, I aggressively executed the proje
 ### References
 The original paper was published here:
 * [https://www.digitalengineering247.com/article/creating-high-speed-electrical-analysis-for-energy-research/](https://www.digitalengineering247.com/article/creating-high-speed-electrical-analysis-for-energy-research/)
+
+Further technical reading:
+* [https://www.nrel.gov/grid/assets/pdfs/second_grid_sim_shirazi.pdf](https://www.nrel.gov/grid/assets/pdfs/second_grid_sim_shirazi.pdf)
+* [https://www.nrel.gov/grid/assets/pdfs/gridsim-d111-nrel-esif-and-phil.pdf](https://www.nrel.gov/grid/assets/pdfs/gridsim-d111-nrel-esif-and-phil.pdf)

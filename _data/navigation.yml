@@ -77,10 +77,15 @@
 - title: "About"
   url: "/about"
   side: right
+  dropdown:
+  - title: "Changes"
+    url: "/changelog/"
+  - title: "Contact"
+    url: "/contact/"
 
-- title: "Contact"
-  url: "/contact/"
-  side: right
+# - title: "Contact"
+#   url: "/contact/"
+#   side: right
 
 - title: "Search"
   url: "/search/"

@@ -1,20 +1,23 @@
 ---
 layout: page_no_title
-title: Software
-permalink: /tags/software.html
+title: VLAN
+permalink: /tags/VLAN
+tags: VLAN
 ---
 
+
 {% assign title = page.title | downcase %}
+{% assign titleup = page.title | upcase %}
 <h1>Archive of posts with '{{ page.title }}'</h1>
 <ul class="posts">
-  {% for post in site.posts %}
-    {% if post.tags contains title %}
-      <li>
-        <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
-        <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
-      </li>
-    {% endif %}
-  {% endfor %}
+{% for post in site.posts %}
+  {% if post.tags contains title or post.tags contains titleup or post.tags contains page.title %}
+    <li>
+      <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
+      <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+    </li>
+  {% endif %}
+{% endfor %}
 </ul>
 <p>
 			<h4>All Tags</h4>
