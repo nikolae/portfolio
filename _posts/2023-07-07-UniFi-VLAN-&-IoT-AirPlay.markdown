@@ -8,7 +8,7 @@ tags: networking UniFi VLAN AirPlay firewall guides
 published: true
 header: no
 image:
-    title: network.jpeg
+    title: network.jpg
     height: 250
     caption: "Image: Adobe Stock"
     caption_url: https://stock.adobe.com/
@@ -109,7 +109,7 @@ In this setup to test back access, I can assign the PC into the IoT network and 
 
 That should be it. Close/reopen apps / reconnect to wifi, etc. This setup has been repeatable and testable for myself and some guinea pigs I verified this with. Reminder that all of the allowed ports are not explicitly tested and are more of a catch-all based on the AirPlay protocol.
 
-### References
+## References
 * [https://www.reddit.com/r/Ubiquiti/comments/p483ua/airplay_and_vlans/](https://www.reddit.com/r/Ubiquiti/comments/p483ua/airplay_and_vlans/)
 * [https://help.ui.com/hc/en-us/articles/115010254227-UniFi-USG-Firewall-How-to-Disable-InterVLAN-Routing](https://help.ui.com/hc/en-us/articles/115010254227-UniFi-USG-Firewall-How-to-Disable-InterVLAN-Routing)
 * [https://community.ui.com/questions/Is-there-a-recommended-way-to-get-Apple-AirPlay-to-work-across-VLANs/80ccb2e8-ce73-4a37-9cc7-1530d4cdc870](https://community.ui.com/questions/Is-there-a-recommended-way-to-get-Apple-AirPlay-to-work-across-VLANs/80ccb2e8-ce73-4a37-9cc7-1530d4cdc870)

@@ -71,6 +71,7 @@ By using a complete top-to-bottom NI solution, I aggressively executed the proje
 ### References
 The original paper was published here:
 * [https://www.digitalengineering247.com/article/creating-high-speed-electrical-analysis-for-energy-research/](https://www.digitalengineering247.com/article/creating-high-speed-electrical-analysis-for-energy-research/)
+
 Further technical reading:
 * [https://www.nrel.gov/grid/assets/pdfs/second_grid_sim_shirazi.pdf](https://www.nrel.gov/grid/assets/pdfs/second_grid_sim_shirazi.pdf)
 * [https://www.nrel.gov/grid/assets/pdfs/gridsim-d111-nrel-esif-and-phil.pdf](https://www.nrel.gov/grid/assets/pdfs/gridsim-d111-nrel-esif-and-phil.pdf)
