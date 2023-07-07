@@ -7,13 +7,13 @@ teaser: "Changelog of this website"
 header: no
 permalink: "/changelog/"
 ---
-2023-07-06 // Version 0.8
+2023-07-06
 :   Added changelog feature. Added post widgets to front page. Adjusted navigation layout, language.yml, and typesetting.
 
-2023-07-02 // Version 0.7
+2023-07-02
 :   Changeover to new theme derived from [Feeling Responsive][1]. New Ruby plugin developed and added support for tags and tag cloud, clickable categories/tags, and initial site assets (images, logo, favicon).
 
-2023-06-29 // Version 0.1
+2023-06-29
 :   Initial work and publication based on Jekyll static site generation/minima theme. Welcome post.
 
 
@@ -25,7 +25,7 @@ permalink: "/changelog/"
 
 
  [1]: https://phlow.github.io/
- [2]: {{ site.url }}/blog/archive/
+ <!-- [2]: {{ site.url }}/blog/archive/
  [3]: #
  [4]: #
  [5]: #
@@ -33,4 +33,4 @@ permalink: "/changelog/"
  [7]: #
  [8]: #
  [9]: #
- [10]: #
+ [10]: # -->
