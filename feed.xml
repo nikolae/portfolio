@@ -9,6 +9,142 @@
 		<atom:link href="https://nickaroneseno.com/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>UniFi VLANs and AirPlay</title>
+				<link>https://nickaroneseno.com/network/vlan/UniFi-VLAN-&-IoT-AirPlay/</link>
+				<pubDate>Fri, 07 Jul 2023 06:00:01 -0600</pubDate>
+				<description>&lt;h2 id=&quot;objective&quot;&gt;Objective&lt;/h2&gt;
+
+&lt;p&gt;Create an internal network (LAN) that is separate from IoT devices, but still have limited communication back and forth such that media protocols such as multicast and AirPlay work. In this configuration, IoT devices are allowed to talk to each other freely and to access the internet, but only selectively to LAN (AirPlay being the main example in this demo). To verify after setup, you can connect a PC to the IoT network and try accessing devices on LAN (use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ping&lt;/code&gt; or trying to access a shared volume). As bonus points, to make a further restricted setup, we will change IoT to a Guest Network; this prevents IoT devices from talking to each other at all. As IoT devices typically need to peer connections, this is not recommended without site-specific research.&lt;/p&gt;
+
+&lt;div class=&quot;panel radius&quot;&gt;
+  &lt;p id=&quot;toc&quot;&gt;&lt;strong&gt;Table of Contents&lt;/strong&gt;&lt;/p&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#objective&quot; id=&quot;markdown-toc-objective&quot;&gt;Objective&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#test-setup&quot; id=&quot;markdown-toc-test-setup&quot;&gt;Test setup&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#create-networks&quot; id=&quot;markdown-toc-create-networks&quot;&gt;Create Networks&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#lan&quot; id=&quot;markdown-toc-lan&quot;&gt;LAN&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#iot&quot; id=&quot;markdown-toc-iot&quot;&gt;IoT&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#enable-multicast-support&quot; id=&quot;markdown-toc-enable-multicast-support&quot;&gt;Enable Multicast support&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#in-the-wifi-network-for-lan-verify-these-settings&quot; id=&quot;markdown-toc-in-the-wifi-network-for-lan-verify-these-settings&quot;&gt;In the WiFi network for LAN, verify these settings:&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#firewall&quot; id=&quot;markdown-toc-firewall&quot;&gt;Firewall&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#create-firewall-groups&quot; id=&quot;markdown-toc-create-firewall-groups&quot;&gt;Create Firewall Groups&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#now-that-the-two-groups-are-made-start-making-these-rules&quot; id=&quot;markdown-toc-now-that-the-two-groups-are-made-start-making-these-rules&quot;&gt;Now that the two groups are made, start making these rules:&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#remainder-of-rules&quot; id=&quot;markdown-toc-remainder-of-rules&quot;&gt;Remainder of rules&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#ssh&quot; id=&quot;markdown-toc-ssh&quot;&gt;SSH&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#testing&quot; id=&quot;markdown-toc-testing&quot;&gt;Testing&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#references&quot; id=&quot;markdown-toc-references&quot;&gt;References&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;test-setup&quot;&gt;Test setup&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;PC with iTunes (on LAN)&lt;/li&gt;
+  &lt;li&gt;Phone with Apple Music (on LAN WiFi)&lt;/li&gt;
+  &lt;li&gt;UniFi controller running the network application&lt;/li&gt;
+  &lt;li&gt;Managed switch&lt;/li&gt;
+  &lt;li&gt;A media enabled music player (I’m using a Yamaha RX-A1060 receiver) (on wired IoT).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;create-networks&quot;&gt;Create Networks&lt;/h2&gt;
+&lt;p&gt;Create the main and IoT networks.
+&lt;img src=&quot;/assets/images/guides/vlan1.jpg&quot; alt=&quot;VLAN1&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;lan&quot;&gt;LAN&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/guides/vlan2.jpg&quot; alt=&quot;VLAN2&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;iot&quot;&gt;IoT&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/guides/vlan3.jpg&quot; alt=&quot;VLAN3&quot; /&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Note: See the VLAN ID - make sure this is the same for this network throughout the process. IGMP Snooping seems to have no effect. I tested both, but then left it enabled.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;enable-multicast-support&quot;&gt;Enable Multicast support&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/guides/vlan4.jpg&quot; alt=&quot;VLAN4&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;in-the-wifi-network-for-lan-verify-these-settings&quot;&gt;In the WiFi network for LAN, verify these settings:&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/guides/vlan5.jpg&quot; alt=&quot;VLAN5&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;firewall&quot;&gt;Firewall&lt;/h2&gt;
+
+&lt;h3 id=&quot;create-firewall-groups&quot;&gt;Create Firewall Groups&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/guides/vlan6.jpg&quot; alt=&quot;VLAN6&quot; /&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Note: the ports are highly specific to your environment. Not every port was objectively tested. Recommend investigation with Wireshark and is left as an exercise to the reader. For reference: &lt;a href=&quot;https://community.ui.com/questions/Is-there-a-recommended-way-to-get-Apple-AirPlay-to-work-across-VLANs/80ccb2e8-ce73-4a37-9cc7-1530d4cdc870&quot;&gt;UI.com&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/guides/vlan7.jpg&quot; alt=&quot;VLAN7&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/guides/vlan8.jpg&quot; alt=&quot;VLAN8&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The previous two groups allow for quick changing of settings. The port group will be setup to allow IoT devices to broadcast back new sessions to the controlling devices on LAN. This configuration is not intuitive, as one typically thinks allowing ports open from LAN to IoT. However, the protocol works in such a way that mDNS allows you to initially see the IoT devices from LAN (and their IPs) and try to establish an initial connection. After that initial connection, the ports from IoT to LAN as new sessions are then required to complete the circuit, as it were.&lt;/p&gt;
+
+&lt;p&gt;The second group of IP address ranges are to be customized for your specific network. These will be used as an end rule to block anything that doesn’t match the allow rules. It should be composed of any networks in your setup you would like to secure from IoT (typically all).&lt;/p&gt;
+
+&lt;h3 id=&quot;now-that-the-two-groups-are-made-start-making-these-rules&quot;&gt;Now that the two groups are made, start making these rules:&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/guides/vlan9.jpg&quot; alt=&quot;VLAN9&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;LAN In, in Ubiquiti’s parlance, is the first instance in which packets enter your LAN. Backwards from industry, as best I can tell, but so be it.&lt;/p&gt;
+
+&lt;h3 id=&quot;remainder-of-rules&quot;&gt;Remainder of rules&lt;/h3&gt;
+&lt;p&gt;This says that LAN can access anything and is used as a launching off point.
+&lt;img src=&quot;/assets/images/guides/vlan10.jpg&quot; alt=&quot;VLAN10&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Allow LAN to IoT. This is essentially duplicate, but in case you lock down LAN as a whole, this will keep the setup working.
+&lt;img src=&quot;/assets/images/guides/vlan11.jpg&quot; alt=&quot;VLAN11&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Allow IoT to LAN established/related. This says that after a device in LAN initially asks an IoT device for a connection, we will allow that initial talk-back from IoT to LAN, but only if the originating source was a device from LAN. Note that new is not checked. Also note the groups used for ease of setup and configuration later.
+&lt;img src=&quot;/assets/images/guides/vlan12.jpg&quot; alt=&quot;VLAN12&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Allow IoT port groups. This is similar to the previous rule but different in a critical way: we are specifically allowing new connections to go from IoT to LAN, but only on specific ports, and only on specific protocols (no SSH, for instance). Update: Changing to UDP only seems to also work for my specific configuration and would be more preferable - the less protocols allowed the better. You will have to experiment on your own network as you add new IoT devices and modify as appropriate.
+&lt;img src=&quot;/assets/images/guides/vlan13.jpg&quot; alt=&quot;VLAN13&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Finally, block anything else that doesn’t explicitly match the above criteria. 
+&lt;img src=&quot;/assets/images/guides/vlan14.jpg&quot; alt=&quot;VLAN14&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Apply the above settings, noting the order of the rules.&lt;/p&gt;
+
+&lt;h3 id=&quot;ssh&quot;&gt;SSH&lt;/h3&gt;
+&lt;p&gt;Settings are found under Site. Once the USG is done provisioning, ssh into it and clear connections.
+&lt;a href=&quot;https://help.ui.com/hc/en-us/articles/115010254227-UniFi-USG-Firewall-How-to-Disable-InterVLAN-Routing&quot;&gt;UI.com&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;clear connection-tracking&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/guides/vlan15.jpg&quot; alt=&quot;VLAN15&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/guides/vlan16.jpg&quot; alt=&quot;VLAN16&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;testing&quot;&gt;Testing&lt;/h3&gt;
+
+&lt;p&gt;Now that the devices are setup and provisioned (you waited, right?), time to test. In my network, the receiver came online on the IoT network as expected, and I will test using my PC.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/guides/vlan17.jpg&quot; alt=&quot;VLAN17&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/guides/vlan18.jpg&quot; alt=&quot;VLAN18&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In this setup to test back access, I can assign the PC into the IoT network and play to the Yamaha. I also cannot access other devices, controller or ping other LAN-based devices. Moving back to the LAN network, I can still cast to the receiver as shown above. My phone on LAN WiFi also has no trouble.&lt;/p&gt;
+
+&lt;p&gt;That should be it. Close/reopen apps / reconnect to wifi, etc. This setup has been repeatable and testable for myself and some guinea pigs I verified this with. Reminder that all of the allowed ports are not explicitly tested and are more of a catch-all based on the AirPlay protocol.&lt;/p&gt;
+
+&lt;h3 id=&quot;references&quot;&gt;References&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.reddit.com/r/Ubiquiti/comments/p483ua/airplay_and_vlans/&quot;&gt;https://www.reddit.com/r/Ubiquiti/comments/p483ua/airplay_and_vlans/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://help.ui.com/hc/en-us/articles/115010254227-UniFi-USG-Firewall-How-to-Disable-InterVLAN-Routing&quot;&gt;https://help.ui.com/hc/en-us/articles/115010254227-UniFi-USG-Firewall-How-to-Disable-InterVLAN-Routing&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://community.ui.com/questions/Is-there-a-recommended-way-to-get-Apple-AirPlay-to-work-across-VLANs/80ccb2e8-ce73-4a37-9cc7-1530d4cdc870&quot;&gt;https://community.ui.com/questions/Is-there-a-recommended-way-to-get-Apple-AirPlay-to-work-across-VLANs/80ccb2e8-ce73-4a37-9cc7-1530d4cdc870&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://community.ui.com/questions/Airplay-across-VLAN-How-to-do/0362cb7f-f38c-43ba-b10e-c2e5cc9dbe16?page=1&quot;&gt;https://community.ui.com/questions/Airplay-across-VLAN-How-to-do/0362cb7f-f38c-43ba-b10e-c2e5cc9dbe16?page=1&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://community.ui.com/questions/Solved-AirPlay-across-walled-off-VLANs/7435c86b-e857-4ebf-bdca-bfd8d67b6647&quot;&gt;https://community.ui.com/questions/Solved-AirPlay-across-walled-off-VLANs/7435c86b-e857-4ebf-bdca-bfd8d67b6647&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+				<guid isPermaLink="true">https://nickaroneseno.com/network/vlan/UniFi-VLAN-&-IoT-AirPlay/</guid>
+			</item>
+		
+			<item>
 				<title>Creating High-Speed Electrical Analysis for Energy Research</title>
 				<link>https://nickaroneseno.com/electrical/power/high-speed-electrical-analysis/</link>
 				<pubDate>Sat, 01 Jul 2023 23:55:01 -0600</pubDate>
@@ -36,12 +172,18 @@
 
 &lt;p&gt;The solution used systems based on the NI cRIO-9024 embedded real-time controller with the NI cRIO-9118 backplane and the NI cRIO-9082 controller for this project. The analog input cards used were 9215 modules. To monitor, analyze, alarm, and communicate, the CompactRIO devices were programmed using the LabVIEW Real-Time and LabVIEW FPGA (field-programmable gate array) development modules. This allowed the system to deterministically perform each of these functions in parallel threads. With data being acquired at 51.2KS/s and 100KS/s, I derived a solution from the CompactRIO Waveform Reference Library to efficiently transfer high-speed data from the FPGA (for acquisition) to the real-time application for communications and action processing.&lt;/p&gt;
 
-&lt;p&gt;Several components of this NI-based solution were critical to the project’s success. First, the LabVIEW FPGA Module made it possible to implement a system responsible for identifying unsafe electrical conditions and reporting these conditions back to the control systems. Second, simultaneously sampling data across input channels using the NI 9215 analog input module, combined with the accuracy of the NI 9467 GPS module, made timing synchronization between all 72 CompactRIO devices accurate within 100 ns. This was especially beneficial when correlating data from multiple laboratories across the entire 183,000 square foot facility, where testing areas are separated and monitored by different CompactRIO devices. Third, with the processing power of the CompactRIO real-time controllers (800MHz and 1.33GHz for the 9024 and 9118 respecitvely), the controllers acquired and processed 28 channels of data each at 51,200Hz while managing other functions, such as alarm monitoring and TCP/IP and Modbus communications.&lt;/p&gt;
+&lt;p&gt;Several components of this NI-based solution were critical to the project’s success. First, the LabVIEW FPGA Module made it possible to implement a system responsible for identifying unsafe electrical conditions and reporting these conditions back to the control systems. Second, simultaneously sampling data across input channels using the NI 9215 analog input module, combined with the accuracy of the NI 9467 GPS module, made timing synchronization between all 72 CompactRIO devices accurate within 100 ns. This was especially beneficial when correlating data from multiple laboratories across the entire 183,000 square foot facility, where testing areas are separated and monitored by different CompactRIO devices. Third, with the processing power of the CompactRIO real-time controllers (800MHz and 1.33GHz for the 9024 and 9118 respectively), the controllers acquired and processed 28 channels of data each at 51,200Hz while managing other functions, such as alarm monitoring and TCP/IP and Modbus communications.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/posts/NREL_powerbus.jpg&quot; alt=&quot;REDB Hardware&quot; /&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-  &lt;p&gt;The REDB for AC and DC testing at the new ESIF, which includes CompactRIO hardware is pictured.
+  &lt;p&gt;The REDB for DC testing at the new ESIF, which includes CompactRIO hardware is pictured.
 &lt;em&gt;Image: &lt;a href=&quot;https://nrel.gov&quot;&gt;NREL&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/NREL_REDB_AC.jpg&quot; alt=&quot;REDB AC Hardware&quot; /&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;The REDB for AC testing.
+&lt;em&gt;Image: &lt;a href=&quot;https://www.nrel.gov/grid/assets/pdfs/second_grid_sim_shirazi.pdf&quot;&gt;NREL&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;I ended up developing and compiling more than seven custom FPGA bitfiles for this project. The individual compile time for each FPGA application averaged 1.5 hours. Furthermore, prior to releasing final versions of the FGPA applications, several preliminary compilations were necessary to account for project scope changes and shifting requirements, as with most consulting projects. To counter this, I leveraged the LabVIEW FPGA Compile Cloud Service to compile the FPGA applications, which saved valuable developer time on the project. With the LabVIEW FPGA Compile Cloud Service, I was able to push multiple FPGA builds to an external server managed by NI, compile code in parallel, free up developer machines for other tasks, and drastically shorten compile times (2.6 to 5.3 times shorter).&lt;/p&gt;
@@ -54,8 +196,8 @@
 
 &lt;ul&gt;
   &lt;li&gt;High-speed data acquisition, which provides a more accurate representation of the effects individual experiments may have on the grid&lt;/li&gt;
-  &lt;li&gt;Correlated data from synchronized systems distributed throughout the ESIF, enabling researchers to better understand multilab experiments and characterize the building’s electrical profile&lt;/li&gt;
-  &lt;li&gt;Easily reconfigurable virtual power meters and CompactRIO systems that can be configured as AC or DC devices without recompiling or reimaging the controllers&lt;/li&gt;
+  &lt;li&gt;Correlated data from synchronized systems distributed throughout the ESIF, enabling researchers to better understand multi-lab experiments and characterize the building’s electrical profile&lt;/li&gt;
+  &lt;li&gt;Easily reconfigurable virtual power meters and CompactRIO systems that can be configured as AC or DC devices without recompiling or re-imaging the controllers&lt;/li&gt;
   &lt;li&gt;A transparent and flexible architecture for future expansion, including features to send data to third-party systems through standard communication protocols such as TCP/IP and Modbus&lt;/li&gt;
   &lt;li&gt;Safe emergency-stop monitoring, implemented in dedicated FPGA code&lt;/li&gt;
   &lt;li&gt;Dynamically configurable analysis algorithms (virtual metering objects), enabled by the deterministic real-time processing capability of CompactRIO hardware for analyzing electrical characteristics for safety violations and in simulating complex circuit breaker logic&lt;/li&gt;
@@ -72,7 +214,10 @@
 &lt;h3 id=&quot;references&quot;&gt;References&lt;/h3&gt;
 &lt;p&gt;The original paper was published here:&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.digitalengineering247.com/article/creating-high-speed-electrical-analysis-for-energy-research/&quot;&gt;https://www.digitalengineering247.com/article/creating-high-speed-electrical-analysis-for-energy-research/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.digitalengineering247.com/article/creating-high-speed-electrical-analysis-for-energy-research/&quot;&gt;https://www.digitalengineering247.com/article/creating-high-speed-electrical-analysis-for-energy-research/&lt;/a&gt;
+Further technical reading:&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.nrel.gov/grid/assets/pdfs/second_grid_sim_shirazi.pdf&quot;&gt;https://www.nrel.gov/grid/assets/pdfs/second_grid_sim_shirazi.pdf&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.nrel.gov/grid/assets/pdfs/gridsim-d111-nrel-esif-and-phil.pdf&quot;&gt;https://www.nrel.gov/grid/assets/pdfs/gridsim-d111-nrel-esif-and-phil.pdf&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
 				<guid isPermaLink="true">https://nickaroneseno.com/electrical/power/high-speed-electrical-analysis/</guid>
@@ -84,7 +229,7 @@
 				<pubDate>Thu, 29 Jun 2023 16:03:15 -0600</pubDate>
 				<description>&lt;h1 id=&quot;welcome&quot;&gt;Welcome!&lt;/h1&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/Donald_Duck.png&quot; alt=&quot;Duck&quot; height=&quot;250&quot; /&gt;&lt;/p&gt;
+&lt;!-- ![Duck](/assets/images/Donald_Duck.png){: height=&quot;250&quot; } --&gt;
 
 &lt;p&gt;After recently being inspired to finally do something with the horde of domains I’m sitting on, today I’m going to lay out how exactly I was able to get my personal portfolio up and running with Cloudflare and Github Pages.&lt;/p&gt;
 
@@ -151,18 +296,18 @@ git checkout &lt;span class=&quot;nt&quot;&gt;--orphan&lt;/span&gt; BRANCH&lt;/c
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;jekyll new &lt;span class=&quot;nt&quot;&gt;--skip-bundle&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--force&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Navigate to where you made the site in Windows Exporer. Open the Gemfile that Jekyll made. Add &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#&lt;/code&gt; to the beginning of the line that starts with gem &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jekyll&lt;/code&gt; to comment out this line. Now, add the github-pages gem by editing the line starting with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# gem &quot;github-pages&quot;&lt;/code&gt;. Change this line to:&lt;/p&gt;
+&lt;p&gt;Navigate to where you made the site in Windows Explorer. Open the Gemfile that Jekyll made. Add &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#&lt;/code&gt; to the beginning of the line that starts with gem &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jekyll&lt;/code&gt; to comment out this line. Now, add the github-pages gem by editing the line starting with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# gem &quot;github-pages&quot;&lt;/code&gt;. Change this line to:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;gem &lt;span class=&quot;s2&quot;&gt;&quot;github-pages&quot;&lt;/span&gt;, &lt;span class=&quot;s2&quot;&gt;&quot;~&amp;gt; GITHUB-PAGES-VERSION&quot;&lt;/span&gt;, group: :jekyll_plugins&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Replace GITHUB-PAGES-VERSION with the latest supported version of the github-pages gem (e.g., 228). Check the version &lt;a href=&quot;https://pages.github.com/versions/&quot;&gt;here&lt;/a&gt;. Save and close.&lt;/p&gt;
 
-&lt;p&gt;Going back to the Bash window, run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bundle install&lt;/code&gt;. When we deploy, a different version (most likely) of Jekyll will be isntalled as a dependency of the github-pages gem that is compatible with GitHub so it can auto-build.&lt;/p&gt;
+&lt;p&gt;Going back to the Bash window, run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bundle install&lt;/code&gt;. When we deploy, a different version (most likely) of Jekyll will be installed as a dependency of the github-pages gem that is compatible with GitHub so it can auto-build.&lt;/p&gt;
 
 &lt;p&gt;Assuming everything has gone right, you’re ready to test your site locally by running &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bundle exec jekyll serve&lt;/code&gt;! It can be found at &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;http://http://localhost:4000/&lt;/code&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;push-it-push-it-real-good&quot;&gt;Push it. Push it real good.&lt;/h1&gt;
-&lt;p&gt;Once you’re happy with the content, don’t forget to add, commit and push your files to the cloud. If you’re not commiting to your build branch (please don’t), make a pull request and let GitHub handle the rest!&lt;/p&gt;
+&lt;p&gt;Once you’re happy with the content, don’t forget to add, commit and push your files to the cloud. If you’re not committing to your build branch (please don’t), make a pull request and let GitHub handle the rest!&lt;/p&gt;
 
 &lt;h1 id=&quot;references&quot;&gt;References&lt;/h1&gt;
 &lt;p&gt;The info for this post was concatenated from the following sources:&lt;/p&gt;

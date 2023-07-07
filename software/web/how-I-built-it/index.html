@@ -26,7 +26,7 @@
 
 
 	<!-- Search Engine Optimization -->
-	<meta name="description" content="In which I go off the Rails">
+	<meta name="description" content="In which I go off the &#39;Rails&#39;">
 	
 	
 	
@@ -37,7 +37,7 @@
 
 	<!-- Facebook Open Graph -->
 	<meta property="og:title" content="How I Built It">
-	<meta property="og:description" content="In which I go off the Rails">
+	<meta property="og:description" content="In which I go off the &#39;Rails&#39;">
 	<meta property="og:url" content="https://nickaroneseno.com/software/web/how-I-built-it/">
 	<meta property="og:locale" content="en_EN">
 	<meta property="og:type" content="website">
@@ -167,12 +167,6 @@
           
           
         
-
-              
-
-          
-          
-        
         
       </ul>
       
@@ -237,26 +231,26 @@
           
             
             
+
               <li class="divider"></li>
-              <li><a  href="https://nickaroneseno.com/about">About</a></li>
+              <li class="has-dropdown">
+                <a  href="https://nickaroneseno.com/about">About</a>
 
-            
-            
-          
-        
+                  <ul class="dropdown">
+                    
 
-              
+                      
 
+                      <li><a  href="https://nickaroneseno.com/changelog/">Changes</a></li>
+                    
 
+                      
 
-          
-          
-            
-            
-              <li class="divider"></li>
-              <li><a  href="https://nickaroneseno.com/contact/">Contact</a></li>
+                      <li><a  href="https://nickaroneseno.com/contact/">Contact</a></li>
+                    
+                  </ul>
 
-            
+              </li>
             
           
         
@@ -319,14 +313,14 @@
 
 			
 			<p class="teaser" itemprop="description">
-				In which I go off the Rails
+				In which I go off the 'Rails'
 			</p>
 			
 
 			<div itemprop="articleSection">
 			<h1 id="welcome">Welcome!</h1>
 
-<p><img src="/assets/images/Donald_Duck.png" alt="Duck" height="250" /></p>
+<!-- ![Duck](/assets/images/Donald_Duck.png){: height="250" } -->
 
 <p>After recently being inspired to finally do something with the horde of domains I’m sitting on, today I’m going to lay out how exactly I was able to get my personal portfolio up and running with Cloudflare and Github Pages.</p>
 
@@ -393,18 +387,18 @@ git checkout <span class="nt">--orphan</span> BRANCH</code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-sh" data-lang="sh">jekyll new <span class="nt">--skip-bundle</span> <span class="nb">.</span> <span class="nt">--force</span></code></pre></figure>
 
-<p>Navigate to where you made the site in Windows Exporer. Open the Gemfile that Jekyll made. Add <code class="language-plaintext highlighter-rouge">#</code> to the beginning of the line that starts with gem <code class="language-plaintext highlighter-rouge">jekyll</code> to comment out this line. Now, add the github-pages gem by editing the line starting with <code class="language-plaintext highlighter-rouge"># gem "github-pages"</code>. Change this line to:</p>
+<p>Navigate to where you made the site in Windows Explorer. Open the Gemfile that Jekyll made. Add <code class="language-plaintext highlighter-rouge">#</code> to the beginning of the line that starts with gem <code class="language-plaintext highlighter-rouge">jekyll</code> to comment out this line. Now, add the github-pages gem by editing the line starting with <code class="language-plaintext highlighter-rouge"># gem "github-pages"</code>. Change this line to:</p>
 
 <figure class="highlight"><pre><code class="language-sh" data-lang="sh">gem <span class="s2">"github-pages"</span>, <span class="s2">"~&gt; GITHUB-PAGES-VERSION"</span>, group: :jekyll_plugins</code></pre></figure>
 
 <p>Replace GITHUB-PAGES-VERSION with the latest supported version of the github-pages gem (e.g., 228). Check the version <a href="https://pages.github.com/versions/">here</a>. Save and close.</p>
 
-<p>Going back to the Bash window, run <code class="language-plaintext highlighter-rouge">bundle install</code>. When we deploy, a different version (most likely) of Jekyll will be isntalled as a dependency of the github-pages gem that is compatible with GitHub so it can auto-build.</p>
+<p>Going back to the Bash window, run <code class="language-plaintext highlighter-rouge">bundle install</code>. When we deploy, a different version (most likely) of Jekyll will be installed as a dependency of the github-pages gem that is compatible with GitHub so it can auto-build.</p>
 
 <p>Assuming everything has gone right, you’re ready to test your site locally by running <code class="language-plaintext highlighter-rouge">bundle exec jekyll serve</code>! It can be found at <code class="language-plaintext highlighter-rouge">http://http://localhost:4000/</code></p>
 
 <h1 id="push-it-push-it-real-good">Push it. Push it real good.</h1>
-<p>Once you’re happy with the content, don’t forget to add, commit and push your files to the cloud. If you’re not commiting to your build branch (please don’t), make a pull request and let GitHub handle the rest!</p>
+<p>Once you’re happy with the content, don’t forget to add, commit and push your files to the cloud. If you’re not committing to your build branch (please don’t), make a pull request and let GitHub handle the rest!</p>
 
 <h1 id="references">References</h1>
 <p>The info for this post was concatenated from the following sources:</p>
@@ -439,7 +433,7 @@ git checkout <span class="nt">--orphan</span> BRANCH</code></pre></figure>
 				<span class="icon-archive pr20"> SOFTWARE · WEB</span>
 				<br />
 				<!-- This is where tags are generated. Add custom link to the tag page showing all articles by that specific tag. -->
-				<span class="pr20"><span class="icon-price-tag pr10"> <a href="https://nickaroneseno.com/tags/web.html">web</a></span> <span class="icon-price-tag pr10"> <a href="https://nickaroneseno.com/tags/software.html">software</a></span> <span class="icon-price-tag pr10"> <a href="https://nickaroneseno.com/tags/jekyll.html">jekyll</a></span> <span class="icon-price-tag pr10"> <a href="https://nickaroneseno.com/tags/DNS.html">DNS</a></span> </span>
+				<span class="pr20"><span class="icon-price-tag pr10"> <a href="https://nickaroneseno.com/tags/web.html">web</a></span> <span class="icon-price-tag pr10"> <a href="https://nickaroneseno.com/tags/software.html">software</a></span> <span class="icon-price-tag pr10"> <a href="https://nickaroneseno.com/tags/jekyll.html">jekyll</a></span> <span class="icon-price-tag pr10"> <a href="https://nickaroneseno.com/tags/DNS.html">DNS</a></span> <span class="icon-price-tag pr10"> <a href="https://nickaroneseno.com/tags/guides.html">guides</a></span> </span>
 			</p>
 
 			
