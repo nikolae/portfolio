@@ -34,9 +34,9 @@
       &lt;li&gt;&lt;a href=&quot;#remainder-of-rules&quot; id=&quot;markdown-toc-remainder-of-rules&quot;&gt;Remainder of rules&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#ssh&quot; id=&quot;markdown-toc-ssh&quot;&gt;SSH&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#testing&quot; id=&quot;markdown-toc-testing&quot;&gt;Testing&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#references&quot; id=&quot;markdown-toc-references&quot;&gt;References&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#references&quot; id=&quot;markdown-toc-references&quot;&gt;References&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;/div&gt;
@@ -131,7 +131,7 @@
 
 &lt;p&gt;That should be it. Close/reopen apps / reconnect to wifi, etc. This setup has been repeatable and testable for myself and some guinea pigs I verified this with. Reminder that all of the allowed ports are not explicitly tested and are more of a catch-all based on the AirPlay protocol.&lt;/p&gt;
 
-&lt;h3 id=&quot;references&quot;&gt;References&lt;/h3&gt;
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.reddit.com/r/Ubiquiti/comments/p483ua/airplay_and_vlans/&quot;&gt;https://www.reddit.com/r/Ubiquiti/comments/p483ua/airplay_and_vlans/&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://help.ui.com/hc/en-us/articles/115010254227-UniFi-USG-Firewall-How-to-Disable-InterVLAN-Routing&quot;&gt;https://help.ui.com/hc/en-us/articles/115010254227-UniFi-USG-Firewall-How-to-Disable-InterVLAN-Routing&lt;/a&gt;&lt;/li&gt;
