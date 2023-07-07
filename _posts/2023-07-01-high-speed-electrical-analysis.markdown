@@ -50,7 +50,7 @@ With each of the bitfiles compiled, each and every cRIO of the same family could
 
 ### Solution Benefits
 
-Overall, the my solution delivered the following benefits:
+Overall, the solution delivered the following benefits:
 
 -   High-speed data acquisition, which provides a more accurate representation of the effects individual experiments may have on the grid
 -   Correlated data from synchronized systems distributed throughout the ESIF, enabling researchers to better understand multi-lab experiments and characterize the building's electrical profile
