@@ -33,7 +33,7 @@
 &lt;ul&gt;
   &lt;li&gt;Github account (optional, but recommended)&lt;/li&gt;
   &lt;li&gt;Computing device&lt;/li&gt;
-  &lt;li&gt;Base understanding of Git (here’s a [refresher][conversational-git])&lt;/li&gt;
+  &lt;li&gt;Base understanding of Git (here’s a &lt;a href=&quot;https://alanhohn.com/extras/conversational-git/&quot;&gt;refresher&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;brew&quot;&gt;Brew&lt;/h2&gt;
@@ -82,6 +82,7 @@
   &lt;li&gt;&lt;a href=&quot;https://www.moncefbelyamani.com/how-to-install-xcode-homebrew-git-rvm-ruby-on-mac/&quot;&gt;https://www.moncefbelyamani.com/how-to-install-xcode-homebrew-git-rvm-ruby-on-mac/&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://nickaroneseno.com/software/web/how-I-built-it/&quot;&gt;https://nickaroneseno.com/software/web/how-I-built-it/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
 </description>
 				<guid isPermaLink="true">https://nickaroneseno.com/software/web/Jekyll-on-Mac/</guid>
 			</item>

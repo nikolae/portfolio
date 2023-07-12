@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 	<id>https://nickaroneseno.com/</id>
 	<title>Nick Aroneseno: A technical journey</title>
-	<updated>2023-07-12T17:26:23-06:00</updated>
+	<updated>2023-07-12T17:33:46-06:00</updated>
 
 	<subtitle>A personal &lt;em&gt;how did I do this that one time&lt;/em&gt; archive, portfolio, and personal web presence.</subtitle>
 
@@ -67,7 +67,7 @@
 &lt;ul&gt;
   &lt;li&gt;Github account (optional, but recommended)&lt;/li&gt;
   &lt;li&gt;Computing device&lt;/li&gt;
-  &lt;li&gt;Base understanding of Git (here’s a [refresher][conversational-git])&lt;/li&gt;
+  &lt;li&gt;Base understanding of Git (here’s a &lt;a href=&quot;https://alanhohn.com/extras/conversational-git/&quot;&gt;refresher&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;brew&quot;&gt;Brew&lt;/h2&gt;
@@ -116,6 +116,7 @@
   &lt;li&gt;&lt;a href=&quot;https://www.moncefbelyamani.com/how-to-install-xcode-homebrew-git-rvm-ruby-on-mac/&quot;&gt;https://www.moncefbelyamani.com/how-to-install-xcode-homebrew-git-rvm-ruby-on-mac/&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://nickaroneseno.com/software/web/how-I-built-it/&quot;&gt;https://nickaroneseno.com/software/web/how-I-built-it/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
 </content>
 
 			
