@@ -4,7 +4,7 @@ title:  "How I Built It"
 teaser: "In which I go off the 'Rails'"
 date:   2023-06-29 15:03:15 -0700
 categories: software web
-tags: web software jekyll DNS guides
+tags: web software jekyll DNS guides windows
 published: true
 ---
 # Welcome!

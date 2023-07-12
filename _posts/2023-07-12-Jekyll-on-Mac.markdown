@@ -2,9 +2,9 @@
 layout: page
 title:  "Jekyll on Mac"
 teaser: "The definition of insanity is doing it again and again."
-date:   2023-07-13 07:00:00 -0600
+date:   2023-07-12 07:00:00 -0600
 categories: software web
-tags: web software jekyll guides
+tags: web software jekyll guides mac
 ---
 ## Do it again
 
@@ -64,3 +64,5 @@ Once you have a site generated or cloned, preview the website with `bundle exec 
 * [https://www.moncefbelyamani.com/which-shell-am-i-using-how-can-i-switch/](https://www.moncefbelyamani.com/which-shell-am-i-using-how-can-i-switch/)
 * [https://www.moncefbelyamani.com/how-to-install-xcode-homebrew-git-rvm-ruby-on-mac/](https://www.moncefbelyamani.com/how-to-install-xcode-homebrew-git-rvm-ruby-on-mac/)
 * [https://nickaroneseno.com/software/web/how-I-built-it/](https://nickaroneseno.com/software/web/how-I-built-it/)
+
+[conversational-git]: https://alanhohn.com/extras/conversational-git/
