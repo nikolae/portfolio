@@ -319,12 +319,26 @@
 
 			<div itemprop="articleSection">
 			<h1 id="welcome">Welcome!</h1>
-
-<!-- ![Duck](/assets/images/Donald_Duck.png){: height="250" } -->
-
 <p>After recently being inspired to finally do something with the horde of domains I’m sitting on, today I’m going to lay out how exactly I was able to get my personal portfolio up and running with Cloudflare and Github Pages.</p>
 
 <p>This guide is for Windows.</p>
+
+<div class="panel radius">
+  <p id="toc"><strong>Table of Contents</strong></p>
+<ul id="markdown-toc">
+  <li><a href="#welcome" id="markdown-toc-welcome">Welcome!</a></li>
+  <li><a href="#goals" id="markdown-toc-goals">Goals:</a></li>
+  <li><a href="#requirements" id="markdown-toc-requirements">Requirements</a></li>
+  <li><a href="#ruby" id="markdown-toc-ruby">Ruby</a></li>
+  <li><a href="#bundler" id="markdown-toc-bundler">Bundler</a></li>
+  <li><a href="#git" id="markdown-toc-git">Git</a></li>
+  <li><a href="#jekyll" id="markdown-toc-jekyll">Jekyll</a></li>
+  <li><a href="#build-it" id="markdown-toc-build-it">Build it!</a></li>
+  <li><a href="#push-it-push-it-real-good" id="markdown-toc-push-it-push-it-real-good">Push it. Push it real good.</a></li>
+  <li><a href="#references" id="markdown-toc-references">References</a></li>
+</ul>
+
+</div>
 
 <h1 id="goals">Goals:</h1>
 <ul>
@@ -395,7 +409,7 @@ git checkout <span class="nt">--orphan</span> BRANCH</code></pre></figure>
 
 <p>Going back to the Bash window, run <code class="language-plaintext highlighter-rouge">bundle install</code>. When we deploy, a different version (most likely) of Jekyll will be installed as a dependency of the github-pages gem that is compatible with GitHub so it can auto-build.</p>
 
-<p>Assuming everything has gone right, you’re ready to test your site locally by running <code class="language-plaintext highlighter-rouge">bundle exec jekyll serve</code>! It can be found at <code class="language-plaintext highlighter-rouge">http://http://localhost:4000/</code></p>
+<p>Assuming everything has gone right, you’re ready to test your site locally by running <code class="language-plaintext highlighter-rouge">bundle exec jekyll serve</code>! It can be found at <a href="http://localhost:4000/">http://localhost:4000/</a></p>
 
 <h1 id="push-it-push-it-real-good">Push it. Push it real good.</h1>
 <p>Once you’re happy with the content, don’t forget to add, commit and push your files to the cloud. If you’re not committing to your build branch (please don’t), make a pull request and let GitHub handle the rest!</p>
@@ -433,7 +447,7 @@ git checkout <span class="nt">--orphan</span> BRANCH</code></pre></figure>
 				<span class="icon-archive pr20"> SOFTWARE · WEB</span>
 				<br />
 				<!-- This is where tags are generated. Add custom link to the tag page showing all articles by that specific tag. -->
-				<span class="pr20"><span class="icon-price-tag pr10"> <a href="https://nickaroneseno.com/tags/web.html">web</a></span> <span class="icon-price-tag pr10"> <a href="https://nickaroneseno.com/tags/software.html">software</a></span> <span class="icon-price-tag pr10"> <a href="https://nickaroneseno.com/tags/jekyll.html">jekyll</a></span> <span class="icon-price-tag pr10"> <a href="https://nickaroneseno.com/tags/DNS.html">DNS</a></span> <span class="icon-price-tag pr10"> <a href="https://nickaroneseno.com/tags/guides.html">guides</a></span> </span>
+				<span class="pr20"><span class="icon-price-tag pr10"> <a href="https://nickaroneseno.com/tags/web.html">web</a></span> <span class="icon-price-tag pr10"> <a href="https://nickaroneseno.com/tags/software.html">software</a></span> <span class="icon-price-tag pr10"> <a href="https://nickaroneseno.com/tags/jekyll.html">jekyll</a></span> <span class="icon-price-tag pr10"> <a href="https://nickaroneseno.com/tags/DNS.html">DNS</a></span> <span class="icon-price-tag pr10"> <a href="https://nickaroneseno.com/tags/guides.html">guides</a></span> <span class="icon-price-tag pr10"> <a href="https://nickaroneseno.com/tags/windows.html">windows</a></span> </span>
 			</p>
 
 			

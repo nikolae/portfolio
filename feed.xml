@@ -9,6 +9,84 @@
 		<atom:link href="https://nickaroneseno.com/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Jekyll on Mac</title>
+				<link>https://nickaroneseno.com/software/web/Jekyll-on-Mac/</link>
+				<pubDate>Wed, 12 Jul 2023 07:00:00 -0600</pubDate>
+				<description>&lt;h2 id=&quot;do-it-again&quot;&gt;Do it again&lt;/h2&gt;
+
+&lt;p&gt;I recently posted a &lt;a href=&quot;https://nickaroneseno.com/software/web/how-I-built-it/&quot;&gt;guide&lt;/a&gt; on how to use Jekyll as a static site generator on Windows. Time to do it again! This guide is for Mac.&lt;/p&gt;
+
+&lt;div class=&quot;panel radius&quot;&gt;
+  &lt;p id=&quot;toc&quot;&gt;&lt;strong&gt;Table of Contents&lt;/strong&gt;&lt;/p&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#do-it-again&quot; id=&quot;markdown-toc-do-it-again&quot;&gt;Do it again&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#requirements&quot; id=&quot;markdown-toc-requirements&quot;&gt;Requirements&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#brew&quot; id=&quot;markdown-toc-brew&quot;&gt;Brew&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#ruby&quot; id=&quot;markdown-toc-ruby&quot;&gt;Ruby&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#jekyll&quot; id=&quot;markdown-toc-jekyll&quot;&gt;Jekyll&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#references&quot; id=&quot;markdown-toc-references&quot;&gt;References&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;requirements&quot;&gt;Requirements&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Github account (optional, but recommended)&lt;/li&gt;
+  &lt;li&gt;Computing device&lt;/li&gt;
+  &lt;li&gt;Base understanding of Git (here’s a [refresher][conversational-git])&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;brew&quot;&gt;Brew&lt;/h2&gt;
+&lt;p&gt;While Mac comes with Ruby, it’s usually a bit outdated from the latest. For instance, a June 2023 Mac ships with Ruby from April 2022. We don’t necessarily want to remove that version. For this reason, we will be installing &lt;a href=&quot;https://brew.sh&quot;&gt;Homebrew&lt;/a&gt; - a package manager. As of July 2023, paste this into Terminal: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;&lt;/code&gt;, or go to the &lt;a href=&quot;https://brew.sh&quot;&gt;website&lt;/a&gt; and look for the latest command.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/guides/mac01.jpg&quot; alt=&quot;mac01&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Once it’s installed, you might want to consider adding it to your PATH variable to easily call it. As two separate commands, run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(echo; echo &apos;eval &quot;$(/opt/homebrew/bin/brew shellenv)&quot;&apos;) &amp;gt;&amp;gt; /Users/USER/.zprofile&lt;/code&gt; (where USER is your Unix short name) and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;eval &quot;$(/opt/homebrew/bin/brew shellenv)&quot;&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;ruby&quot;&gt;Ruby&lt;/h2&gt;
+&lt;p&gt;Now that we have a nice package manager installed, let’s grab the Ruby version we need: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;brew install chruby ruby-install xz&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/guides/mac02.jpg&quot; alt=&quot;mac02&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ruby-install ruby 3.1.3&lt;/code&gt; (this will take a bit).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/guides/mac03.jpg&quot; alt=&quot;mac03&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Configure Terminal to call chruby by default:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;echo &quot;source $(brew --prefix)/opt/chruby/share/chruby/chruby.sh&quot; &amp;gt;&amp;gt; ~/.zshrc&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;echo &quot;source $(brew --prefix)/opt/chruby/share/chruby/auto.sh&quot; &amp;gt;&amp;gt; ~/.zshrc&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;echo &quot;chruby ruby-3.1.3&quot; &amp;gt;&amp;gt; ~/.zshrc # run &apos;chruby&apos; to see actual version&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Quit Terminal and re-open it. Run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;chruby&lt;/code&gt; to make sure the above PATH updates worked and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ruby -v&lt;/code&gt; to check the right version of Ruby is now being used.&lt;/p&gt;
+
+&lt;h2 id=&quot;jekyll&quot;&gt;Jekyll&lt;/h2&gt;
+&lt;p&gt;This is pretty straightforward. Type and run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gem install jekyll&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/guides/mac04.jpg&quot; alt=&quot;mac04&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You are now at the point of cloning your existing website (if you have one) or making a new one. If you have an existing one, clone (see &lt;a href=&quot;https://nickaroneseno.com/software/web/how-I-built-it/#git&quot;&gt;previous guide&lt;/a&gt;) and navigate to your site’s directory. Don’t forget to run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bundle install&lt;/code&gt;, or you will get some bad news:
+&lt;img src=&quot;/assets/images/guides/mac05.jpg&quot; alt=&quot;mac05&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;To create a new site, navigate to the directory you want and type: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jekyll new --skip-bundle . --force&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Once you have a site generated or cloned, preview the website with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bundle exec jekyll serve&lt;/code&gt; or generate the HTML files with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bundle exec jekyll build&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/guides/mac06.png&quot; alt=&quot;mac06&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://jekyllrb.com/docs/installation/macos/&quot;&gt;https://jekyllrb.com/docs/installation/macos/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.moncefbelyamani.com/which-shell-am-i-using-how-can-i-switch/&quot;&gt;https://www.moncefbelyamani.com/which-shell-am-i-using-how-can-i-switch/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.moncefbelyamani.com/how-to-install-xcode-homebrew-git-rvm-ruby-on-mac/&quot;&gt;https://www.moncefbelyamani.com/how-to-install-xcode-homebrew-git-rvm-ruby-on-mac/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://nickaroneseno.com/software/web/how-I-built-it/&quot;&gt;https://nickaroneseno.com/software/web/how-I-built-it/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+				<guid isPermaLink="true">https://nickaroneseno.com/software/web/Jekyll-on-Mac/</guid>
+			</item>
+		
+			<item>
 				<title>UniFi VLANs and AirPlay</title>
 				<link>https://nickaroneseno.com/network/vlan/UniFi-VLAN-&-IoT-AirPlay/</link>
 				<pubDate>Fri, 07 Jul 2023 06:00:01 -0600</pubDate>
@@ -231,12 +309,26 @@
 				<link>https://nickaroneseno.com/software/web/how-I-built-it/</link>
 				<pubDate>Thu, 29 Jun 2023 16:03:15 -0600</pubDate>
 				<description>&lt;h1 id=&quot;welcome&quot;&gt;Welcome!&lt;/h1&gt;
-
-&lt;!-- ![Duck](/assets/images/Donald_Duck.png){: height=&quot;250&quot; } --&gt;
-
 &lt;p&gt;After recently being inspired to finally do something with the horde of domains I’m sitting on, today I’m going to lay out how exactly I was able to get my personal portfolio up and running with Cloudflare and Github Pages.&lt;/p&gt;
 
 &lt;p&gt;This guide is for Windows.&lt;/p&gt;
+
+&lt;div class=&quot;panel radius&quot;&gt;
+  &lt;p id=&quot;toc&quot;&gt;&lt;strong&gt;Table of Contents&lt;/strong&gt;&lt;/p&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#welcome&quot; id=&quot;markdown-toc-welcome&quot;&gt;Welcome!&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#goals&quot; id=&quot;markdown-toc-goals&quot;&gt;Goals:&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#requirements&quot; id=&quot;markdown-toc-requirements&quot;&gt;Requirements&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#ruby&quot; id=&quot;markdown-toc-ruby&quot;&gt;Ruby&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#bundler&quot; id=&quot;markdown-toc-bundler&quot;&gt;Bundler&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#git&quot; id=&quot;markdown-toc-git&quot;&gt;Git&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#jekyll&quot; id=&quot;markdown-toc-jekyll&quot;&gt;Jekyll&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#build-it&quot; id=&quot;markdown-toc-build-it&quot;&gt;Build it!&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#push-it-push-it-real-good&quot; id=&quot;markdown-toc-push-it-push-it-real-good&quot;&gt;Push it. Push it real good.&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#references&quot; id=&quot;markdown-toc-references&quot;&gt;References&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/div&gt;
 
 &lt;h1 id=&quot;goals&quot;&gt;Goals:&lt;/h1&gt;
 &lt;ul&gt;
@@ -307,7 +399,7 @@ git checkout &lt;span class=&quot;nt&quot;&gt;--orphan&lt;/span&gt; BRANCH&lt;/c
 
 &lt;p&gt;Going back to the Bash window, run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bundle install&lt;/code&gt;. When we deploy, a different version (most likely) of Jekyll will be installed as a dependency of the github-pages gem that is compatible with GitHub so it can auto-build.&lt;/p&gt;
 
-&lt;p&gt;Assuming everything has gone right, you’re ready to test your site locally by running &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bundle exec jekyll serve&lt;/code&gt;! It can be found at &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;http://http://localhost:4000/&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Assuming everything has gone right, you’re ready to test your site locally by running &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bundle exec jekyll serve&lt;/code&gt;! It can be found at &lt;a href=&quot;http://localhost:4000/&quot;&gt;http://localhost:4000/&lt;/a&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;push-it-push-it-real-good&quot;&gt;Push it. Push it real good.&lt;/h1&gt;
 &lt;p&gt;Once you’re happy with the content, don’t forget to add, commit and push your files to the cloud. If you’re not committing to your build branch (please don’t), make a pull request and let GitHub handle the rest!&lt;/p&gt;
