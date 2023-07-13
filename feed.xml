@@ -3,7 +3,7 @@
 <?xml-stylesheet type="text/css" href="https://nickaroneseno.com/assets/css/rss.css" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 	<channel>
-		<title>Nick Aroneseno: A technical journey</title>
+		<title>Nick Aroneseno</title>
 		<description>A personal &lt;em&gt;how did I do this that one time&lt;/em&gt; archive, portfolio, and personal web presence.</description>
 		<link>https://nickaroneseno.com/</link>
 		<atom:link href="https://nickaroneseno.com/feed.xml" rel="self" type="application/rss+xml" />
