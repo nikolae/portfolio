@@ -7,6 +7,9 @@ teaser: "Changelog of this website"
 header: no
 permalink: "/changelog/"
 ---
+2023-07-12
+:   Added case-insensitive alphanumeric tag sorting and display.
+
 2023-07-06
 :   Added changelog feature. Added post widgets to front page. Adjusted navigation layout, language.yml, and typesetting.
 

@@ -29,15 +29,20 @@ permalink: "blog/archive/"
 		</dl>
 		<p>
 			<h4>All Tags</h4>
-			{% capture temptags %}
-			  {% for tag in site.tags %}
-				{{ tag[1].size | plus: 1000 }}#{{ tag[0] }}#{{ tag[1].size }}
-			  {% endfor %}
-			{% endcapture %}
-			{% assign sortedtemptags = temptags | split:' ' | sort | reverse %}
-			{% for temptag in sortedtemptags %}
-			  {% assign tagitems = temptag | split: '#' %}
-			  {% capture tagname %}{{ tagitems[1] }}{% endcapture %}
+				<!-- |{{ tag[1].size | plus: 1000 }}#{{ tag[0] }}#{{ tag[1].size }} -->
+			<!-- Start gathering all site tags -->
+			<!-- Create an empty array, then push (add) each tag into it. -->
+			{% assign all_tags = "" | split:"" %}
+			{% for tag in site.tags %}
+				{% capture temp_tag %}{{ tag[0] }}{% endcapture %}
+				{% assign all_tags = all_tags | push: temp_tag %}
+			{% endfor %}
+
+			<!-- Make a new array based on alphanumeric, case insensitive sorting -->
+			{% assign alpha_tags = all_tags | sort_natural %}
+
+			<!-- Finally, make a link to that tag based on the name -->
+			{% for tagname in alpha_tags %}
 			  <a href="/tags/{{ tagname }}.html"><code class="highligher-rouge"><nobr>{{ tagname }}</nobr></code></a>
 			{% endfor %}
 			</p>
