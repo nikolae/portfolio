@@ -1,9 +1,7 @@
 ---
 layout: page
-title: "Change change change!"
-meta_title: "Personal Doings Changelog"
-subheadline: "Personal Doings Changelog"
-teaser: "Changelog of this website"
+title: "Changelog"
+meta_title: "A technical journey changelog"
 header: no
 permalink: "/changelog/"
 ---
