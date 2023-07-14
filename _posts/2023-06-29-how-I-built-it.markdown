@@ -4,16 +4,20 @@ title:  "How I Built It"
 teaser: "In which I go off the 'Rails'"
 date:   2023-06-29 15:03:15 -0700
 categories: software web
-tags: web software jekyll DNS guides
+tags: web software jekyll DNS guides windows
 published: true
 ---
 # Welcome!
-
-<!-- ![Duck](/assets/images/Donald_Duck.png){: height="250" } -->
-
 After recently being inspired to finally do something with the horde of domains I'm sitting on, today I'm going to lay out how exactly I was able to get my personal portfolio up and running with Cloudflare and Github Pages. 
 
 This guide is for Windows.
+
+<div class="panel radius" markdown="1">
+**Table of Contents**
+{: #toc }
+*  TOC
+{:toc}
+</div>
 
 # Goals:
 * To be able to have a place to remember how I did _that one thing_
@@ -83,7 +87,7 @@ Replace GITHUB-PAGES-VERSION with the latest supported version of the github-pag
 
 Going back to the Bash window, run `bundle install`. When we deploy, a different version (most likely) of Jekyll will be installed as a dependency of the github-pages gem that is compatible with GitHub so it can auto-build.
 
-Assuming everything has gone right, you're ready to test your site locally by running `bundle exec jekyll serve`! It can be found at `http://http://localhost:4000/`
+Assuming everything has gone right, you're ready to test your site locally by running `bundle exec jekyll serve`! It can be found at [http://localhost:4000/](http://localhost:4000/)
 
 # Push it. Push it real good.
 Once you're happy with the content, don't forget to add, commit and push your files to the cloud. If you're not committing to your build branch (please don't), make a pull request and let GitHub handle the rest!

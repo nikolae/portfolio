@@ -1,8 +1,8 @@
 ---
 layout: page_no_title
-title: web
-permalink: /tags/web
-tags: web
+title: windows
+permalink: /tags/windows
+tags: windows
 ---
 
 

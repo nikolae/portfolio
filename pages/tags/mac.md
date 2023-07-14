@@ -1,8 +1,8 @@
 ---
 layout: page_no_title
-title: web
-permalink: /tags/web
-tags: web
+title: mac
+permalink: /tags/mac
+tags: mac
 ---
 
 
