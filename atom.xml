@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 	<id>https://nickaroneseno.com/</id>
 	<title>Nick Aroneseno</title>
-	<updated>2023-07-20T17:49:50-06:00</updated>
+	<updated>2023-07-20T17:51:16-06:00</updated>
 
 	<subtitle>A personal &lt;em&gt;how did I do this that one time&lt;/em&gt; archive, portfolio, and personal web presence.</subtitle>
 
@@ -31,7 +31,7 @@
 			<id>https://nickaroneseno.com/woodworking/furniture/Catio/</id>
 			<title>Catio</title>
 			<link href="https://nickaroneseno.com/woodworking/furniture/Catio/" rel="alternate" type="text/html" title="Catio" />
-			<updated>2023-07-19T06:00:00-06:00</updated>
+			<updated>2023-07-20T06:00:00-06:00</updated>
 
 			
 				
@@ -222,7 +222,7 @@
 				<category term="furniture" />
 			
 
-			<published>2023-07-19T06:00:00-06:00</published>
+			<published>2023-07-20T06:00:00-06:00</published>
 		</entry>
 	
 		<entry>
