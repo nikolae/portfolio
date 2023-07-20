@@ -20,10 +20,10 @@ widget2:
   image: widget-2-302x182.jpg
   text: 'VLANs and AirPlay - a UniFi case study into creating AirPlay and multicast support while maintaining segmented networks and security.'
 widget3:
-  title: "Welcome!"
-  url: "https://nickaroneseno.com/software/web/how-I-built-it/"
+  title: "Catio"
+  url: "https://nickaroneseno.com/woodworking/furniture/catio/"
   image: widget-3-302x182.jpg
-  text: 'A guide on static site generation using Jekyll, custom domain forwarding, and hosting via GitHub Pages.'
+  text: 'The process of how I built a modular year-round catio for my spoiled feline.'
 # widget2:
 #   title: "Why use this theme?"
 #   url: 'http://phlow.github.io/feeling-responsive/info/'
