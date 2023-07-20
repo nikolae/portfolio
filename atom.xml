@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 	<id>https://nickaroneseno.com/</id>
 	<title>Nick Aroneseno</title>
-	<updated>2023-07-14T15:27:28-06:00</updated>
+	<updated>2023-07-20T17:49:50-06:00</updated>
 
 	<subtitle>A personal &lt;em&gt;how did I do this that one time&lt;/em&gt; archive, portfolio, and personal web presence.</subtitle>
 
@@ -26,6 +26,204 @@
 
 	<generator uri="http://jekyllrb.com" version="3.9.3">Jekyll</generator>
 
+	
+		<entry>
+			<id>https://nickaroneseno.com/woodworking/furniture/Catio/</id>
+			<title>Catio</title>
+			<link href="https://nickaroneseno.com/woodworking/furniture/Catio/" rel="alternate" type="text/html" title="Catio" />
+			<updated>2023-07-19T06:00:00-06:00</updated>
+
+			
+				
+				<author>
+					
+						<name>Nick</name>
+					
+					
+					
+						<uri>https://nickaroneseno.com/</uri>
+					
+				</author>
+			
+			<summary>A journey building an outdoor palace for the fuzzy one.</summary>
+			<content type="html" xml:base="https://nickaroneseno.com/woodworking/furniture/Catio/">&lt;div class=&quot;panel radius&quot;&gt;
+  &lt;p id=&quot;toc&quot;&gt;&lt;strong&gt;Table of Contents&lt;/strong&gt;&lt;/p&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#the-idea&quot; id=&quot;markdown-toc-the-idea&quot;&gt;The Idea&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#the-requirements&quot; id=&quot;markdown-toc-the-requirements&quot;&gt;The Requirements&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#research&quot; id=&quot;markdown-toc-research&quot;&gt;Research&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#the-build&quot; id=&quot;markdown-toc-the-build&quot;&gt;The Build&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#assembly&quot; id=&quot;markdown-toc-assembly&quot;&gt;Assembly&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#sat-for-the-cat&quot; id=&quot;markdown-toc-sat-for-the-cat&quot;&gt;SAT for the Cat&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#improvements--future-revisions&quot; id=&quot;markdown-toc-improvements--future-revisions&quot;&gt;Improvements &amp;amp; Future Revisions&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#materials-used&quot; id=&quot;markdown-toc-materials-used&quot;&gt;Materials Used&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#references&quot; id=&quot;markdown-toc-references&quot;&gt;References&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;the-idea&quot;&gt;The Idea&lt;/h2&gt;
+&lt;p&gt;We have an indoor cat, and he is harness trained and enjoys going for walks around the yard (mainly to eat grass), but he also enjoys having the sliding door open so he can smell All The Smells™ through the screen. While this is great for him, it’s less great during cold, rainy, or hot weather when I’d prefer to have that door closed.&lt;/p&gt;
+
+&lt;p&gt;I’ve seen catios around the internet before, but I didn’t feel comfortable paying for some flimsy plastic contraption that I could someday regret (longevity, safety, value). Now, I haven’t gotten my workshop setup yet, so I needed a plan that was a compromise between fully custom and catio-in-a-box.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-requirements&quot;&gt;The Requirements&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Be safe
+    &lt;ul&gt;
+      &lt;li&gt;Needs to keep out other animals&lt;/li&gt;
+      &lt;li&gt;Needs to provide shelter from the elements&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Allow easy access for emergency extraction
+    &lt;ul&gt;
+      &lt;li&gt;A scared cat is not a fun cat&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Be modular&lt;/li&gt;
+  &lt;li&gt;Allow easy cat access&lt;/li&gt;
+  &lt;li&gt;Look nice&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;research&quot;&gt;Research&lt;/h2&gt;
+&lt;p&gt;Browsing &lt;a href=&quot;https://www.reddit.com/r/Catio/comments/ubs6aj/any_free_catio_plans/&quot;&gt;Reddit&lt;/a&gt;, I ran across a post that a user linked to. That person had the idea to repurpose some furniture from &lt;a href=&quot;https://www.cuteness.com/13558989/how-to-turn-an-ikea-shelf-into-a-catio&quot;&gt;Ikea&lt;/a&gt;. I thought this was great, especially when you look around and find that some of their things are actually quite nice and solid wood.&lt;/p&gt;
+
+&lt;p&gt;I settled on the &lt;a href=&quot;https://www.ikea.com/us/en/cat/ivar-system-11703/&quot;&gt;IVAR&lt;/a&gt; collection of shelves to base my design on. It’s solid pine, comes pre-sanded, and has a whole bunch of pre-drilled holes for being able to place shelves in any position.&lt;/p&gt;
+
+&lt;p&gt;I decided to get three tall shelf ends, a bunch of shelves, two cross braces, and two of the smaller shelf ends. These last two I wanted to turn into a door to be able to get the cat out more easily. I used one for the door itself and another as parts for a doorframe.&lt;/p&gt;
+
+&lt;p&gt;The other question was how to enclose everything. I could use screening material, but the square footage I would need and the current prices turned me off on this. I was against chicken wire or other metal-based enclosures mainly because in the afternoon sun they would become much too hot for a cat making regular contact with it. I eventually settled on a product from MeowSafe. It’s made of nylon and has a decent amount of stretch to it.
+&lt;img src=&quot;/assets/images/guides/catio/catio08.jpeg&quot; alt=&quot;CAT8&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;the-build&quot;&gt;The Build&lt;/h2&gt;
+&lt;p&gt;The first thing was to figure out was the door situation. Laying out the parts in the basement, I was able to outline how I wanted the door to be framed and where to cut the wood.
+&lt;img src=&quot;/assets/images/guides/catio/catio01.jpeg&quot; alt=&quot;CAT1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Seeing as this would be living outside, it was imperative that this also be weather resistant. I found a nice looking stain and sealant and proceeded to start that process outside.
+&lt;img src=&quot;/assets/images/guides/catio/catio02.jpeg&quot; alt=&quot;CAT2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;It was slower going than I realized, so after the first pass on the top side of the shelves and door, I moved the production inside where I was able to stage the staining to make an assembly line and use the taller ends as a makeshift drying rack.
+&lt;img src=&quot;/assets/images/guides/catio/catio05.jpeg&quot; alt=&quot;CAT5&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I initially started out the staining process using a three inch paintbrush thinking that it would speed things up, but it was difficult to wield on the sides of the shelves and the end pieces.
+&lt;img src=&quot;/assets/images/guides/catio/catio06.jpeg&quot; alt=&quot;CAT6&quot; /&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Second coat of stain and sealant in progress.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;I mentioned this to my Father, who provided a really great tip - use an old cloth or shirt while wearing gloves and spread it on this way. It was about four times faster!
+&lt;img src=&quot;/assets/images/guides/catio/catio07.jpeg&quot; alt=&quot;CAT7&quot; /&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;With age comes a staggering amount of tips.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;assembly&quot;&gt;Assembly&lt;/h2&gt;
+&lt;p&gt;Once everything was stained and sealed (with two coats - I used about a half gallon), I moved all pieces outside to start framing it all out. First was to re-verify that the measurements I took before I started would fit into the space I planned on placing it. I chose a window in the back so we could encapsulate the catio on three sides and simply open the window when the cat wanted to go out (or come in).
+&lt;img src=&quot;/assets/images/guides/catio/catio09.jpeg&quot; alt=&quot;CAT9&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In order to build the door, I first needed a square and steady base; some initial and not-final placement of the shelves helped with this.
+&lt;img src=&quot;/assets/images/guides/catio/catio10.jpeg&quot; alt=&quot;CAT10&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I repeated the process on the other side and stood the unit up to start leveling it out and then lock it in place with the cross supports.
+&lt;img src=&quot;/assets/images/guides/catio/catio11.jpeg&quot; alt=&quot;CAT11&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/guides/catio/catio12.jpeg&quot; alt=&quot;CAT12&quot; /&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Measure twice!&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Now that we were all square and secure, it was time to actually build the door. Rough placement of the pieces allowed for any final visual checks to take place. Before staining, I had cut the second smaller end right where the wooden lateral pieces went into the second vertical post. This gave me one post with slats and one without. I used the piece without slats as a way to mount the door hinges at the same height as the second end piece acting as a door.&lt;br /&gt;
+&lt;img src=&quot;/assets/images/guides/catio/catio14.jpeg&quot; alt=&quot;CAT14&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I used the other piece with slats mounted to the middle section to be able to mount a locking latch. I did end up finding some spare lumber in the basement to also lift this section to the same height as the door, but a 1x2 cut to the same length as the door would do just as well.
+&lt;img src=&quot;/assets/images/guides/catio/catio13.jpeg&quot; alt=&quot;CAT13&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The door being outlined, I set to making sure that the door was spaced evenly top-to-bottom from the frame and that the hinges were level with the assembly as a whole. I utilized a set square to aid in this effort.
+&lt;img src=&quot;/assets/images/guides/catio/catio15.jpeg&quot; alt=&quot;CAT15&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I then repeated the process on the other side to make sure the locking frame was evenly spaced.
+&lt;img src=&quot;/assets/images/guides/catio/catio16.jpeg&quot; alt=&quot;CAT16&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;If you refer a few images up, you’ll notice that the horizontal slats are overhanging the center section. I opted to leave these longer pre-mounting since I didn’t know quite exactly the spacing (no, I did not use CAD for this design. I’m an EE after all; I have standards). Once both the door and the locking frame were mounted, I used a jigsaw to cut the excess off in situ.
+&lt;img src=&quot;/assets/images/guides/catio/catio17.jpeg&quot; alt=&quot;CAT17&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;To reduce the likelihood of splinters, I sanded the ends at this time. I also dabbed more stain on.
+&lt;img src=&quot;/assets/images/guides/catio/catio18.jpeg&quot; alt=&quot;CAT18&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We now have the assembly mostly done! I stood the unit back up so that I could work on the door handle and the lock.
+&lt;img src=&quot;/assets/images/guides/catio/catio19.jpeg&quot; alt=&quot;CAT19&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/guides/catio/catio20.jpeg&quot; alt=&quot;CAT20&quot; /&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;A fancy door handle for a fancy (spoiled) cat.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The last part was the netting. I stapled the sections (and the door) that would be against the house or not readily useful for extraction.
+&lt;img src=&quot;/assets/images/guides/catio/catio23.jpeg&quot; alt=&quot;CAT23&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I then had to come up with a way to make the mesh secure yet removable. I had gotten some industrial Velcro to see if this would work. As you’ll see, it did. Mostly.&lt;/p&gt;
+
+&lt;p&gt;I stapled the hook part to the frame and came up with a way to fold the mesh back over itself and onto the fuzzy part. I then stapled this into a piece of styrofoam that the staple gun came in. This allowed me some resistance to the gun while stapling into something that wouldn’t get damaged and allow to pull the piece out without tearing anything. I used some needle-nose pliers to fold the ends of the staples back on themselves to lock it all in place. And then I repeated that whole process a bunch…
+&lt;img src=&quot;/assets/images/guides/catio/catio22.jpeg&quot; alt=&quot;CAT22&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;sat-for-the-cat&quot;&gt;SAT for the Cat&lt;/h2&gt;
+&lt;p&gt;And finally, to test!
+&lt;img src=&quot;/assets/images/guides/catio/catio25.jpeg&quot; alt=&quot;CAT25&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Overall it went quite well. The usual ‘what is this’ aura of a cat in new places was present, but I am happy to report that a week in he’s begging to go out.
+&lt;img src=&quot;/assets/images/guides/catio/catio27.jpeg&quot; alt=&quot;CAT27&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;improvements--future-revisions&quot;&gt;Improvements &amp;amp; Future Revisions&lt;/h3&gt;
+&lt;p&gt;During Site Acceptance Testing, an unintended user action initially caused some worry. As it turns out, the center points of the mesh feel pretty good on fuzzy cheeks, and our cat started to &lt;em&gt;really&lt;/em&gt; get into rubbing his face all over the mesh. And I mean really. He was pushing the mesh a good six inches out from its resting position, causing panic that the velcro may give way. Fortunately, no premature collapse of the mesh occurred, and new data was gathered in terms of useability.
+&lt;img src=&quot;/assets/images/guides/catio/catio28.jpeg&quot; alt=&quot;CAT28&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I need to address the fact that he can push the mesh pretty far. I’m leaning towards scrapping the Velcro and just stapling the mesh throughout and using the door and the backing window as a means of extraction if needed. It’s also pretty sparse right now, but I’d like to work on adding some niceties for the feline (a pillow, hideaway box, maybe a hammock).&lt;/p&gt;
+
+&lt;p&gt;Speaking of the window, I also want to work on an entry/exit mechanism. Since the mesh openings aren’t as small as window screen, I can’t just leave the window open all the time for him (lest I want lots of creepy crawlies in the house). I’ll ruminate on this and report back.&lt;/p&gt;
+
+&lt;p&gt;The lock also overhangs a bit. It’s a small thing, but I’d like to replace it with a smaller one.&lt;/p&gt;
+
+&lt;h2 id=&quot;materials-used&quot;&gt;Materials Used&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;3x &lt;a href=&quot;https://www.ikea.com/us/en/p/ivar-side-unit-87489409/&quot;&gt;IVAR side unit 20x89”&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;2x &lt;a href=&quot;https://www.ikea.com/us/en/p/ivar-side-unit-63756709/&quot;&gt;IVAR side unit 20x70”&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;9x &lt;a href=&quot;https://www.ikea.com/us/en/p/ivar-shelf-pine-80318165/&quot;&gt;IVAR shelf 20x33”&lt;/a&gt; - use whatever quantity you want&lt;/li&gt;
+  &lt;li&gt;2x &lt;a href=&quot;https://www.ikea.com/us/en/p/observatoer-cross-brace-galvanized-87749600/&quot;&gt;OBSERVATÖR cross brace&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;1x cabinet handle - from local hardware store&lt;/li&gt;
+  &lt;li&gt;1x sliding door latch - from local hardware store&lt;/li&gt;
+  &lt;li&gt;3x door hinges - from local hardware store&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://meowsafe.com/products/cat-netting-catio-cat-net&quot;&gt;110sq ft of cat safe netting&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.reddit.com/r/Catio/comments/ubs6aj/any_free_catio_plans/&quot;&gt;https://www.reddit.com/r/Catio/comments/ubs6aj/any_free_catio_plans/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.cuteness.com/13558989/how-to-turn-an-ikea-shelf-into-a-catio&quot;&gt;https://www.cuteness.com/13558989/how-to-turn-an-ikea-shelf-into-a-catio&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+
+			
+				<category term="woodworking" />
+			
+				<category term="furniture" />
+			
+			
+				<category term="cat" />
+			
+				<category term="woodworking" />
+			
+				<category term="guides" />
+			
+				<category term="furniture" />
+			
+
+			<published>2023-07-19T06:00:00-06:00</published>
+		</entry>
 	
 		<entry>
 			<id>https://nickaroneseno.com/software/web/Jekyll-on-Mac/</id>
