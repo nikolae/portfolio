@@ -21,7 +21,7 @@ widget2:
   text: 'VLANs and AirPlay - a UniFi case study into creating AirPlay and multicast support while maintaining segmented networks and security.'
 widget3:
   title: "Catio"
-  url: "https://nickaroneseno.com/woodworking/furniture/catio/"
+  url: "https://nickaroneseno.com/woodworking/furniture/Catio/"
   image: widget-3-302x182.jpg
   text: 'The process of how I built a modular year-round catio for my spoiled feline.'
 # widget2:
