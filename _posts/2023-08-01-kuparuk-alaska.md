@@ -11,7 +11,14 @@ image:
     title: kuparuk_alaska.jpg
     caption: Sunset in Kuparuk, AK at 3:22pm
 ---
-## Extracting Fire From Ice. 
+<div class="panel radius" markdown="1">
+**Table of Contents**
+{: #toc }
+*  TOC
+{:toc}
+</div>
+
+## Extracting Fire From Ice 
 In 2011 and 2012, I was part of a team that developed, deployed, and supported a data acquisition and analysis system for Schlumberger and ConocoPhillips in [Kuparuk, Alaska](https://alaska.conocophillips.com/who-we-are/alaska-operations/kuparuk/). This remains one of my favorite field support trip experiences to tell. 
 
 ![map](/assets/images/posts/kuparuk_map.jpg)
