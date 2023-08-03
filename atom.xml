@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 	<id>https://nickaroneseno.com/</id>
 	<title>Nick Aroneseno</title>
-	<updated>2023-08-03T13:48:20-06:00</updated>
+	<updated>2023-08-03T13:58:07-06:00</updated>
 
 	<subtitle>A personal &lt;em&gt;how did I do this that one time&lt;/em&gt; archive, portfolio, and personal web presence.</subtitle>
 
@@ -46,7 +46,23 @@
 				</author>
 			
 			<summary>A project from 2012 when I was in the North Slope of Alaska.</summary>
-			<content type="html" xml:base="https://nickaroneseno.com/engineering/software/kuparuk-alaska/">&lt;h2 id=&quot;extracting-fire-from-ice&quot;&gt;Extracting Fire From Ice.&lt;/h2&gt;
+			<content type="html" xml:base="https://nickaroneseno.com/engineering/software/kuparuk-alaska/">&lt;div class=&quot;panel radius&quot;&gt;
+  &lt;p id=&quot;toc&quot;&gt;&lt;strong&gt;Table of Contents&lt;/strong&gt;&lt;/p&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#extracting-fire-from-ice&quot; id=&quot;markdown-toc-extracting-fire-from-ice&quot;&gt;Extracting Fire From Ice&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#daq&quot; id=&quot;markdown-toc-daq&quot;&gt;DAQ&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#who-are-you&quot; id=&quot;markdown-toc-who-are-you&quot;&gt;Who Are You?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#mind-the-bears&quot; id=&quot;markdown-toc-mind-the-bears&quot;&gt;Mind The Bears&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#storm&quot; id=&quot;markdown-toc-storm&quot;&gt;Storm&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#data&quot; id=&quot;markdown-toc-data&quot;&gt;Data&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#who-are-you-reprise&quot; id=&quot;markdown-toc-who-are-you-reprise&quot;&gt;Who Are You (reprise)?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#fun-times&quot; id=&quot;markdown-toc-fun-times&quot;&gt;Fun Times&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#references&quot; id=&quot;markdown-toc-references&quot;&gt;References&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;extracting-fire-from-ice&quot;&gt;Extracting Fire From Ice&lt;/h2&gt;
 &lt;p&gt;In 2011 and 2012, I was part of a team that developed, deployed, and supported a data acquisition and analysis system for Schlumberger and ConocoPhillips in &lt;a href=&quot;https://alaska.conocophillips.com/who-we-are/alaska-operations/kuparuk/&quot;&gt;Kuparuk, Alaska&lt;/a&gt;. This remains one of my favorite field support trip experiences to tell.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/posts/kuparuk_map.jpg&quot; alt=&quot;map&quot; /&gt;&lt;/p&gt;
