@@ -15,10 +15,10 @@ widget1:
   image: widget-1-302x182.jpg
   text: 'A look back at the project I developed for NREL that won two NI Engineering Impact awards.'
 widget2:
-  title: "VLANs and AirPlay"
-  url: 'https://nickaroneseno.com/network/vlan/UniFi-VLAN-&-IoT-AirPlay/'
+  title: "Ignik Sikumi"
+  url: 'https://nickaroneseno.com/engineering/software/kuparuk-alaska/'
   image: widget-2-302x182.jpg
-  text: 'VLANs and AirPlay - a UniFi case study into creating AirPlay and multicast support while maintaining segmented networks and security.'
+  text: 'A project from 2012 when I was on site in Deadhorse and Kuparuk, Alaska in the middle of Winter.'
 widget3:
   title: "Catio"
   url: "https://nickaroneseno.com/woodworking/furniture/Catio/"

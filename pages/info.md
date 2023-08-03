@@ -1,11 +1,11 @@
 ---
 layout: page
 title: About
-permalink: /info/
+permalink: /about/
 ---
 
 ## Me
-I am Nick: an electrical engineer and software developer of 13+ years who has worked in the implantable medical product, aerospace, oil & gas, test & measurement, industrial automation, consumer product, and embedded circuit design spaces. I've done work for various Government labs ([NREL](https://nrel.gov), [Sandia](https://www.sandia.gov/)), Medtronic, Tesla, Google, Apple, John Deer, Wrigley, Intel, and many others. I was the recipient of two Engineering Impact awards in 2014: one from National Instruments for Energy and the other from National Instruments/Intel for Internet of Things. I am currently working on embedded class 3 medical implantable devices. I am passionate about technology for both work and pleasure, and enjoy reading with a cat on my lap.  
+I am Nick: an electrical engineer and software developer of 13+ years who has worked in the implantable medical product, aerospace, oil & gas, test & measurement, industrial automation, consumer product, and embedded circuit design spaces. I've done work for various Government labs and branches ([NREL](https://nrel.gov), [Sandia](https://www.sandia.gov/), [DoD](https://www.defense.gov), [DoE](https://www.energy.gov)), Medtronic, Tesla, Google, Apple, John Deer, Wrigley, Intel, and many others. I was the recipient of two Engineering Impact awards in 2014: one from National Instruments for Energy and the other from National Instruments/Intel for Internet of Things. I am currently working on embedded class 3 medical implantable devices. I am passionate about technology for both work and pleasure, and enjoy reading with a cat on my lap.  
 
 Check out my [LinkedIn here](https://www.linkedin.com/in/naroneseno/).
 
