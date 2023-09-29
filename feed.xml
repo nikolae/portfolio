@@ -9,6 +9,84 @@
 		<atom:link href="https://nickaroneseno.com/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Send and Receive email with custom domain</title>
+				<link>https://nickaroneseno.com/web/software/domain-email/</link>
+				<pubDate>Fri, 29 Sep 2023 08:00:01 -0600</pubDate>
+				<description>&lt;div class=&quot;panel radius&quot;&gt;
+  &lt;p id=&quot;toc&quot;&gt;&lt;strong&gt;Table of Contents&lt;/strong&gt;&lt;/p&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#custom-email&quot; id=&quot;markdown-toc-custom-email&quot;&gt;Custom email&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#receiving&quot; id=&quot;markdown-toc-receiving&quot;&gt;Receiving&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#sending&quot; id=&quot;markdown-toc-sending&quot;&gt;Sending&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#app-password&quot; id=&quot;markdown-toc-app-password&quot;&gt;App password&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#configure-gmail&quot; id=&quot;markdown-toc-configure-gmail&quot;&gt;Configure Gmail&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;custom-email&quot;&gt;Custom email&lt;/h2&gt;
+&lt;p&gt;Having a custom domain is just the first step, especially if you are looking to start a business or have a more transportable email (the public facing address can be used with different providers over time).&lt;/p&gt;
+
+&lt;h2 id=&quot;receiving&quot;&gt;Receiving&lt;/h2&gt;
+&lt;p&gt;Many domain providers allow you to create email aliases and assign behind-the-scenes addresses for incoming mail to forward to. Here are the settings with Cloudflare:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/guides/email01.jpg&quot; alt=&quot;email1&quot; /&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Cloudflare email forwarding.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;It’s pretty simple. Create a new address for the domain and assign it to one of the email’s that you’ve added to your account. Nice!&lt;/p&gt;
+
+&lt;h2 id=&quot;sending&quot;&gt;Sending&lt;/h2&gt;
+&lt;p&gt;Sending is a bit more complicated, but not overly so. Here are the steps for Gmail&lt;/p&gt;
+
+&lt;h3 id=&quot;app-password&quot;&gt;App password&lt;/h3&gt;
+&lt;p&gt;Before we can even begin configuring the send portion in Gmail’s settings, we need to create a new app password for this specific address to access your Gmail account.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Manage your account&lt;/li&gt;
+  &lt;li&gt;Security&lt;/li&gt;
+  &lt;li&gt;2 Step Verification&lt;/li&gt;
+  &lt;li&gt;Scroll down and click on app password&lt;/li&gt;
+  &lt;li&gt;Give it a name (I recommend the new address you want to use)
+    &lt;ul&gt;
+      &lt;li&gt;Remember the password it generates. You will need this in the next few steps.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/guides/email02.jpg&quot; alt=&quot;email2&quot; /&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Create an app password.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;configure-gmail&quot;&gt;Configure Gmail&lt;/h3&gt;
+&lt;p&gt;Go to Gmail, and click &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Settings&lt;/code&gt;, then &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;See all settings&lt;/code&gt;. Go the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Accounts and Import&lt;/code&gt; tab, then click &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Add another email&lt;/code&gt; address about mid-way down the page.
+&lt;img src=&quot;/assets/images/guides/email03.jpg&quot; alt=&quot;email3&quot; /&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Add another email address.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The next window will ask for a name, which is the display name when you send the email (who is it from) and the address you added on the Receive side. Populate these both, leave the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Treat as an alias&lt;/code&gt; box checked, then click &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Next Step&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/guides/email04.jpg&quot; alt=&quot;email4&quot; /&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Add your send-as name and new email address.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The final step is to add your mail exchange server (if using gmail, leave as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;smtp.gmail.com&lt;/code&gt; and either port 465 or 587), your Google account username, and the app password you made before. Spaces do not matter. Click Add account and refresh Gmail. You will receive a test email from the server to verify, which should already forward to you - this is why we configure Receive before Send. Confirm the email and that’s it!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/guides/email05.jpg&quot; alt=&quot;email5&quot; /&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Configure the new address.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+</description>
+				<guid isPermaLink="true">https://nickaroneseno.com/web/software/domain-email/</guid>
+			</item>
+		
+			<item>
 				<title>CO2 Sequestration In Methane Hydrates</title>
 				<link>https://nickaroneseno.com/engineering/software/kuparuk-alaska/</link>
 				<pubDate>Thu, 03 Aug 2023 06:55:01 -0600</pubDate>
