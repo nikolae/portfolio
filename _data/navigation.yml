@@ -78,6 +78,8 @@
   url: "/about"
   side: right
   dropdown:
+  - title: "Info"
+    url: "/about"
   - title: "Changes"
     url: "/changelog/"
   - title: "Contact"
