@@ -247,6 +247,11 @@
 
                       
 
+                      <li><a  href="https://nickaroneseno.com/about">Info</a></li>
+                    
+
+                      
+
                       <li><a  href="https://nickaroneseno.com/changelog/">Changes</a></li>
                     
 
@@ -367,7 +372,7 @@
 
             <p class="shadow-black">
               A personal <em>how did I do this that one time</em> archive, portfolio, and personal web presence.
-              <a href="https://nickaroneseno.com/info/">More ›</a>
+              <a href="https://nickaroneseno.com/about/">More ›</a>
             </p>
           </div><!-- /.large-6.columns -->
 
@@ -456,7 +461,7 @@
       <div id="subfooter">
         <nav class="row">
           <section id="subfooter-left" class="small-12 medium-6 columns credits">
-            <p>A personal <em>how did I do this that one time</em> archive, portfolio, and personal web presence. © 2023 Nick Aroneseno</p>
+            <p>A personal <em>how did I do this that one time</em> archive, portfolio, and personal web presence. © 2025 Nick Aroneseno</p>
           </section>
 
           <section id="subfooter-right" class="small-12 medium-6 columns">
