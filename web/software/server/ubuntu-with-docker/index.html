@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Send and Receive email with custom domain</title>
+	<title>Ubuntu Server and Docker</title>
 
     <link rel="stylesheet" type="text/css" href="https://nickaroneseno.com/assets/css/styles_feeling_responsive.css">
 
@@ -26,19 +26,19 @@
 
 
 	<!-- Search Engine Optimization -->
-	<meta name="description" content="Expanding the power of your domain name by creating custom email addresses.">
+	<meta name="description" content="Containerize all the things">
 	
 	
 	
 	
 	
-	<link rel="canonical" href="https://nickaroneseno.com/web/software/domain-email/">
+	<link rel="canonical" href="https://nickaroneseno.com/web/software/server/ubuntu-with-docker/">
 
 
 	<!-- Facebook Open Graph -->
-	<meta property="og:title" content="Send and Receive email with custom domain">
-	<meta property="og:description" content="Expanding the power of your domain name by creating custom email addresses.">
-	<meta property="og:url" content="https://nickaroneseno.com/web/software/domain-email/">
+	<meta property="og:title" content="Ubuntu Server and Docker">
+	<meta property="og:description" content="Containerize all the things">
+	<meta property="og:url" content="https://nickaroneseno.com/web/software/server/ubuntu-with-docker/">
 	<meta property="og:locale" content="en_EN">
 	<meta property="og:type" content="website">
 	<meta property="og:site_name" content="Nick Aroneseno">
@@ -297,14 +297,14 @@
 
 				<div itemprop="name">
 					
-					<h1>Send and Receive email with custom domain</h1>
+					<h1>Ubuntu Server and Docker</h1>
 				</div>
 			</header>
 
 
 			
 			<p class="teaser" itemprop="description">
-				Expanding the power of your domain name by creating custom email addresses.
+				Containerize all the things
 			</p>
 			
 
@@ -322,6 +322,21 @@
 </ul>
 
 </div>
+
+<p>Create a new VM in the proxmox administration panel. 
+Proceed through the steps to install ubuntu server. For a smaller footprint, choose the minimized install option.</p>
+
+<p>Once installed, assuming debian, run the usual 
+apt update
+apt upgrade
+reboot for health and take a fresh snapshot</p>
+
+<p>Next, install docker (portainer is dogfooding docker and is a docker image itself): apt install docker.io -y
+Install portainer: docker pull portainer/portainer-ce:latest
+Next, run the image: docker run -d -p 9443:9443 –restart always -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer-ce:latest
+These switches will have it start automatically and binds the ports on the VM</p>
+
+<p>Done! Access the portainer interface at http://<your-VM-IP>:9443</your-VM-IP></p>
 
 <h2 id="custom-email">Custom email</h2>
 <p>Having a custom domain is just the first step, especially if you are looking to start a business or have a more transportable email (the public facing address can be used with different providers over time).</p>
@@ -357,8 +372,6 @@
 <blockquote>
   <p>Create an app password.</p>
 </blockquote>
-
-<p>Update 3/17/2025: I can’t seem to find a dedicated area in the security settings anymore, but this link seems to work: <a href="https://myaccount.google.com/apppasswords">https://myaccount.google.com/apppasswords</a></p>
 
 <h3 id="configure-gmail">Configure Gmail</h3>
 <p>Go to Gmail, and click <code class="language-plaintext highlighter-rouge">Settings</code>, then <code class="language-plaintext highlighter-rouge">See all settings</code>. Go the <code class="language-plaintext highlighter-rouge">Accounts and Import</code> tab, then click <code class="language-plaintext highlighter-rouge">Add another email</code> address about mid-way down the page.
@@ -396,23 +409,23 @@
 				
 
 				
-				<time class="icon-calendar pr20" datetime="2023-09-29T08:00:01-06:00" itemprop="datePublished"> 2023-09-29</time>
+				<time class="icon-calendar pr20" datetime="2025-02-28T07:00:01-07:00" itemprop="datePublished"> 2025-02-28</time>
 				
 
-				<span class="icon-archive pr20"> WEB · SOFTWARE</span>
+				<span class="icon-archive pr20"> WEB · SOFTWARE · SERVER</span>
 				<br />
 				<!-- This is where tags are generated. Add custom link to the tag page showing all articles by that specific tag. -->
-				<span class="pr20"><span class="icon-price-tag pr10"> <a href="https://nickaroneseno.com/tags/software.html">software</a></span> <span class="icon-price-tag pr10"> <a href="https://nickaroneseno.com/tags/web.html">web</a></span> <span class="icon-price-tag pr10"> <a href="https://nickaroneseno.com/tags/email.html">email</a></span> </span>
+				<span class="pr20"><span class="icon-price-tag pr10"> <a href="https://nickaroneseno.com/tags/software.html">software</a></span> <span class="icon-price-tag pr10"> <a href="https://nickaroneseno.com/tags/self-host.html">self-host</a></span> <span class="icon-price-tag pr10"> <a href="https://nickaroneseno.com/tags/docker.html">docker</a></span> </span>
 			</p>
 
 			
 			<div id="post-nav" class="row">
 				
-				<div class="medium-5 columns"><a class="button small radius prev" href="https://nickaroneseno.com/engineering/software/kuparuk-alaska/">&laquo; CO2 Sequestration In Methane Hydrates</a></div><!-- /.small-4.columns -->
+				<div class="medium-5 columns"><a class="button small radius prev" href="https://nickaroneseno.com/web/software/server/ubuntu-library/">&laquo; Ubuntu Server and a Personal Library</a></div><!-- /.small-4.columns -->
 				
 				<div class="medium-2 columns text-center"><a class="button small radius expand" href="https://nickaroneseno.com/blog/archive/" title="Blog Archive">Archive</a></div><!-- /.small-4.columns -->
 				
-				<div class="medium-5 columns text-right"><a class="button small radius next" href="https://nickaroneseno.com/web/software/server/ubuntu-library/">Ubuntu Server and a Personal Library &raquo;</a></div><!-- /.small-4.columns -->
+				<div class="medium-5 columns text-right"><a class="button small radius next" href="https://nickaroneseno.com/web/software/server/streaming-media/">Ubuntu Server and Docker &raquo;</a></div><!-- /.small-4.columns -->
 				
 			</div>
 			
