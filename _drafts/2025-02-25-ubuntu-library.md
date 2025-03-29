@@ -1,10 +1,10 @@
 ---
 layout: page
-title:  "Send and Receive email with custom domain"
-teaser: "Expanding the power of your domain name by creating custom email addresses."
-date:   2023-09-29 07:00:01 -0700
-categories: web software
-tags: software web email
+title:  "Ubuntu Server and a Personal Library"
+teaser: "Your personal digital library"
+date:   2025-02-25 07:00:01 -0700
+categories: web software server
+tags: software web self-host
 published: true
 header: no
 ---
@@ -40,8 +40,6 @@ Before we can even begin configuring the send portion in Gmail's settings, we ne
 
 ![email2](/assets/images/guides/email02.jpg)
 >Create an app password.
-
-Update 3/17/2025: I can't seem to find a dedicated area in the security settings anymore, but this link seems to work: [https://myaccount.google.com/apppasswords](https://myaccount.google.com/apppasswords)
 
 ### Configure Gmail
 Go to Gmail, and click `Settings`, then `See all settings`. Go the `Accounts and Import` tab, then click `Add another email` address about mid-way down the page.
