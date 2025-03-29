@@ -8,6 +8,6 @@ permalink           : "/contact/"
 ---
 If you need freelance engineering work or are seeking a consult, please reach out:
 
-`admin (at) nickaroneseno (dot) com`
+`jobs (at) nickaroneseno (dot) com`
 
 Or connect with me on [LinkedIn](https://www.linkedin.com/in/naroneseno)
