@@ -9,15 +9,112 @@
 		<atom:link href="https://nickaroneseno.com/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
-				<title>Ubuntu Server and Docker</title>
-				<link>https://nickaroneseno.com/web/software/server/ubuntu-with-docker/</link>
-				<pubDate>Fri, 28 Feb 2025 07:00:01 -0700</pubDate>
+				<title>Streaming Your Media</title>
+				<link>https://nickaroneseno.com/web/software/server/streaming-media/</link>
+				<pubDate>Sat, 29 Mar 2025 08:00:01 -0600</pubDate>
 				<description>&lt;div class=&quot;panel radius&quot;&gt;
   &lt;p id=&quot;toc&quot;&gt;&lt;strong&gt;Table of Contents&lt;/strong&gt;&lt;/p&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#installation&quot; id=&quot;markdown-toc-installation&quot;&gt;Installation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#mounting-media&quot; id=&quot;markdown-toc-mounting-media&quot;&gt;Mounting Media&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#passing-through-the-gpu&quot; id=&quot;markdown-toc-passing-through-the-gpu&quot;&gt;Passing through the GPU&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#configure-jellyfin&quot; id=&quot;markdown-toc-configure-jellyfin&quot;&gt;Configure jellyfin&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#references&quot; id=&quot;markdown-toc-references&quot;&gt;References&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;/div&gt;
 
-&lt;p&gt;I’m not new to the world of virtualization, but I am new to the world of Docker, Portainer, and Kubernetes. I recently built a new app server and put ProxMox on it to act as my hypervisor. Here’s how I setup Docker.&lt;/p&gt;
+&lt;p&gt;Continuing in my recent adventures with ProxMox, I’ve created a self-hosted streaming server. Nickflix, if you will. Here’s how to recreate it:&lt;/p&gt;
+
+&lt;h1 id=&quot;installation&quot;&gt;Installation&lt;/h1&gt;
+&lt;p&gt;Create a new LXC in ProxMox using the latest LTS Debian release.&lt;/p&gt;
+
+&lt;p&gt;To temporarily use a password to ssh in instead of a key, edit &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/ssh/sshd_config&lt;/code&gt; with nano and change &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PermitRootLogin without-password&lt;/code&gt; to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PermitRootLogin yes&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Next, update apt and any installed packages:
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;apt update -y &amp;amp;&amp;amp; apt upgrade -y&lt;/code&gt; (the -y automatically agrees to any prompts, usually size increase notices).&lt;/p&gt;
+
+&lt;p&gt;Install curl:
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;apt install curl&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Install Jellyfin:
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;curl https://repo.jellyfin.org/install-debuntu.sh | bash&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;It should now be running, which you can access at &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;http://&amp;lt;your-local-ip&amp;gt;:8096&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h1 id=&quot;mounting-media&quot;&gt;Mounting Media&lt;/h1&gt;
+&lt;p&gt;You now have a server running, but you need to point it to where your media files are located.&lt;/p&gt;
+
+&lt;p&gt;To mount media using an unpriveledged container:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;SSH into the LXC&lt;/li&gt;
+  &lt;li&gt;Create a group with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GID=10000&lt;/code&gt; which matches the host &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;110000&lt;/code&gt;:
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;groupadd -g 10000 lxc_shares&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Add users:
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;usermod -aG lxc_shares USER&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Shutdown the LXC and switch back to the host, then create a mount point, such as 
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mkdir -p /mnt/lxc_shares/my_nas&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Create a user and password with the appropriate permissions in your media server’s user management.&lt;/li&gt;
+  &lt;li&gt;Add SMB (CIFS) share to fstab:
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{ echo &apos;&apos; ; echo &apos;# Mount CIFS share on demand with rwx permissions for use in LXCs (manually added)&apos; ; echo &apos;//NAS/nas/ /mnt/lxc_shares/my_nas cifs _netdev,x-systemd.automount,noatime,uid=100000,gid=110000,dir_mode=0770,file_mode=0770,user=smb_username,pass=smb_password 0 0&apos; ; } | tee -a /etc/fstab&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Mount the share on the host:
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mount /mnt/lxc_shares/my_nas&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Add a bind mount of the share to the LXC config:
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{ echo &apos;mp0: /mnt/lxc_shares/nas_rwx/,mp=/mnt/nas,ro=1&apos; ; } | tee -a /etc/pve/lxc/&amp;lt;LXC_ID&amp;gt;.conf&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Start the LXC. You should now see the NAS mounted in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/mnt/nas&lt;/code&gt; directory.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;passing-through-the-gpu&quot;&gt;Passing through the GPU&lt;/h1&gt;
+&lt;p&gt;Transcoding is a useful way of serving media to devices that may not have native capability to decode, say, HDR content. GPUs are much better suited to this task, so to pass a GPU in your system to the media server we just created, follow these steps:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Open LXC to find the render GID and add 100,000 to it
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;render:x:104:jellyfin&lt;/code&gt; -&amp;gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;100104&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Open the host and find the GPU device info (usually renderD128):
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ls -l /dev/dri&lt;/code&gt;
+&lt;img src=&quot;/assets/images/guides/jellyfin_GPU.png&quot; alt=&quot;jellyfin&quot; /&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;GPU device info.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Open nano again and add the following to the LXC’s conf making sure to use the noted number from earlier in the third line
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lxc.cgroup2.devices.allow: c 226:128 rwm&lt;/code&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lxc.mount.entry: /dev/dri/renderD128 dev/dri/renderD128 none bind,optional,create=file&lt;/code&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lxc.hook.pre-start: sh -c &quot;chown 100000:100104 /dev/dri/renderD128&quot;&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Back in the LXC, add the jellyfin account to the render group
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;usermod -aG render jellyfin&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Finally, assuming you are using an Intel CPU with integrated GPU and quicksync support, install the appropriate package:
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;apt install -y intel-opencl-icd&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Reboot the LXC, and that’s it! SMB media shares and passthrough hardware decoding is now enabled on your LXC. Easy!&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;configure-jellyfin&quot;&gt;Configure jellyfin&lt;/h1&gt;
+&lt;p&gt;Even though we are passing through the GPU to the media server, we still need to tell the media server to utilize the device.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Under Dashboards &amp;gt; Playback &amp;gt; transcoding, select Intel QuickSync (QSV) hardware acceleration&lt;/li&gt;
+  &lt;li&gt;Under QSV device, enter the default &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/dev/dri/renderD128&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Set the hardware decoding as you see fit.&lt;/li&gt;
+  &lt;li&gt;Enable VPP Tone mapping&lt;/li&gt;
+  &lt;li&gt;Under transcode path, enter /dev/shm to use the server’s RAM as a cache instead of the disk&lt;/li&gt;
+  &lt;li&gt;Select a stereo downmix algorithm; I use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Dave750&lt;/code&gt;.
+I also set Throttle Transcodes and Delete segments, then the values to something like 300 and 720&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;references&quot;&gt;References&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://forum.proxmox.com/threads/guide-jellyfin-remote-network-shares-hw-transcoding-with-intels-qsv-unprivileged-lxc.142639/&quot;&gt;https://forum.proxmox.com/threads/guide-jellyfin-remote-network-shares-hw-transcoding-with-intels-qsv-unprivileged-lxc.142639/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://forum.proxmox.com/threads/tutorial-unprivileged-lxcs-mount-cifs-shares.101795/&quot;&gt;https://forum.proxmox.com/threads/tutorial-unprivileged-lxcs-mount-cifs-shares.101795/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+				<guid isPermaLink="true">https://nickaroneseno.com/web/software/server/streaming-media/</guid>
+			</item>
+		
+			<item>
+				<title>Ubuntu Server and Docker</title>
+				<link>https://nickaroneseno.com/web/software/server/ubuntu-with-docker/</link>
+				<pubDate>Fri, 28 Feb 2025 07:00:01 -0700</pubDate>
+				<description>&lt;p&gt;I’m not new to the world of virtualization, but I am new to the world of Docker, Portainer, and Kubernetes. I recently built a new app server and put ProxMox on it to act as my hypervisor. Here’s how I setup Docker.&lt;/p&gt;
 
 &lt;p&gt;In ProxMox, create a new VM in the administration panel. Proceed through the steps to install Ubuntu server. You can download the ISO from Canonical and store it on either one of the attached drives in ProxMox or something like a NAS. For a smaller footprint, choose the minimized install option.&lt;/p&gt;
 
