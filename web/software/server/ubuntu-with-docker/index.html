@@ -311,89 +311,24 @@
 			<div itemprop="articleSection">
 			<div class="panel radius">
   <p id="toc"><strong>Table of Contents</strong></p>
-<ul id="markdown-toc">
-  <li><a href="#custom-email" id="markdown-toc-custom-email">Custom email</a></li>
-  <li><a href="#receiving" id="markdown-toc-receiving">Receiving</a></li>
-  <li><a href="#sending" id="markdown-toc-sending">Sending</a>    <ul>
-      <li><a href="#app-password" id="markdown-toc-app-password">App password</a></li>
-      <li><a href="#configure-gmail" id="markdown-toc-configure-gmail">Configure Gmail</a></li>
-    </ul>
-  </li>
-</ul>
 
 </div>
 
-<p>Create a new VM in the proxmox administration panel. 
-Proceed through the steps to install ubuntu server. For a smaller footprint, choose the minimized install option.</p>
+<p>I’m not new to the world of virtualization, but I am new to the world of Docker, Portainer, and Kubernetes. I recently built a new app server and put ProxMox on it to act as my hypervisor. Here’s how I setup Docker.</p>
 
-<p>Once installed, assuming debian, run the usual 
-apt update
-apt upgrade
-reboot for health and take a fresh snapshot</p>
+<p>In ProxMox, create a new VM in the administration panel. Proceed through the steps to install Ubuntu server. You can download the ISO from Canonical and store it on either one of the attached drives in ProxMox or something like a NAS. For a smaller footprint, choose the minimized install option.</p>
 
-<p>Next, install docker (portainer is dogfooding docker and is a docker image itself): apt install docker.io -y
-Install portainer: docker pull portainer/portainer-ce:latest
-Next, run the image: docker run -d -p 9443:9443 –restart always -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer-ce:latest
-These switches will have it start automatically and binds the ports on the VM</p>
+<p>Once installed, assuming a Debian-based distro, run the usual 
+<code class="language-plaintext highlighter-rouge">apt update</code>
+<code class="language-plaintext highlighter-rouge">apt upgrade -y</code>
+Reboot for health and take a fresh post-install snapshot.</p>
 
-<p>Done! Access the portainer interface at http://<your-VM-IP>:9443</your-VM-IP></p>
+<p>Next, install Docker (Portainer is dogfooding Docker and is a Docker image itself): <code class="language-plaintext highlighter-rouge">apt install docker.io -y</code>
+Install portainer: <code class="language-plaintext highlighter-rouge">docker pull portainer/portainer-ce:latest</code>
+Next, run the image: <code class="language-plaintext highlighter-rouge">docker run -d -p 9443:9443 --restart always -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer-ce:latest</code>
+These switches will have it start automatically and bind the ports on the VM.</p>
 
-<h2 id="custom-email">Custom email</h2>
-<p>Having a custom domain is just the first step, especially if you are looking to start a business or have a more transportable email (the public facing address can be used with different providers over time).</p>
-
-<h2 id="receiving">Receiving</h2>
-<p>Many domain providers allow you to create email aliases and assign behind-the-scenes addresses for incoming mail to forward to. Here are the settings with Cloudflare:</p>
-
-<p><img src="/assets/images/guides/email01.jpg" alt="email1" /></p>
-<blockquote>
-  <p>Cloudflare email forwarding.</p>
-</blockquote>
-
-<p>It’s pretty simple. Create a new address for the domain and assign it to one of the email’s that you’ve added to your account. Nice!</p>
-
-<h2 id="sending">Sending</h2>
-<p>Sending is a bit more complicated, but not overly so. Here are the steps for Gmail</p>
-
-<h3 id="app-password">App password</h3>
-<p>Before we can even begin configuring the send portion in Gmail’s settings, we need to create a new app password for this specific address to access your Gmail account.</p>
-<ol>
-  <li>Manage your account</li>
-  <li>Security</li>
-  <li>2 Step Verification</li>
-  <li>Scroll down and click on app password</li>
-  <li>Give it a name (I recommend the new address you want to use)
-    <ul>
-      <li>Remember the password it generates. You will need this in the next few steps.</li>
-    </ul>
-  </li>
-</ol>
-
-<p><img src="/assets/images/guides/email02.jpg" alt="email2" /></p>
-<blockquote>
-  <p>Create an app password.</p>
-</blockquote>
-
-<h3 id="configure-gmail">Configure Gmail</h3>
-<p>Go to Gmail, and click <code class="language-plaintext highlighter-rouge">Settings</code>, then <code class="language-plaintext highlighter-rouge">See all settings</code>. Go the <code class="language-plaintext highlighter-rouge">Accounts and Import</code> tab, then click <code class="language-plaintext highlighter-rouge">Add another email</code> address about mid-way down the page.
-<img src="/assets/images/guides/email03.jpg" alt="email3" /></p>
-<blockquote>
-  <p>Add another email address.</p>
-</blockquote>
-
-<p>The next window will ask for a name, which is the display name when you send the email (who is it from) and the address you added on the Receive side. Populate these both, leave the <code class="language-plaintext highlighter-rouge">Treat as an alias</code> box checked, then click <code class="language-plaintext highlighter-rouge">Next Step</code>.</p>
-
-<p><img src="/assets/images/guides/email04.jpg" alt="email4" /></p>
-<blockquote>
-  <p>Add your send-as name and new email address.</p>
-</blockquote>
-
-<p>The final step is to add your mail exchange server (if using gmail, leave as <code class="language-plaintext highlighter-rouge">smtp.gmail.com</code> and either port 465 or 587), your Google account username, and the app password you made before. Spaces do not matter. Click Add account and refresh Gmail. You will receive a test email from the server to verify, which should already forward to you - this is why we configure Receive before Send. Confirm the email and that’s it!</p>
-
-<p><img src="/assets/images/guides/email05.jpg" alt="email5" /></p>
-<blockquote>
-  <p>Configure the new address.</p>
-</blockquote>
-
+<p>Done! Access the portainer interface at <code class="language-plaintext highlighter-rouge">http://&lt;your-VM-IP&gt;:9443</code></p>
 
 			</div>
 
