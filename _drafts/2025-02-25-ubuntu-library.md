@@ -15,6 +15,40 @@ header: no
 {:toc}
 </div>
 
+Install server of your choice (Debian)
+
+Install cifs-utils
+
+Create credentials file
+chown 600 /path/to/creds
+add mount location to fstab
+//server/share /path/to/mount cifs credentials=/path/to/creds 0 0
+
+install calibre-web: https://github.com/janeczku/calibre-web
+
+create a new service under /etc/systemd/system
+
+[Unit]
+Description=Calibre-Web
+
+[Service]
+Type=simple
+User=calibre
+ExecStart=/home/calibre/calibre-web-env/bin/cps
+
+[Install]
+WantedBy=multi-user.target
+
+enable the service
+systemctl enable cps.service
+
+reboot
+
+check service
+systemctl status cps
+
+
+
 ## Custom email 
 Having a custom domain is just the first step, especially if you are looking to start a business or have a more transportable email (the public facing address can be used with different providers over time).
 
