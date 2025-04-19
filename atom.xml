@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 	<id>https://nickaroneseno.com/</id>
 	<title>Nick Aroneseno</title>
-	<updated>2025-03-29T13:22:51-06:00</updated>
+	<updated>2025-04-19T16:04:57-06:00</updated>
 
 	<subtitle>A personal &lt;em&gt;how did I do this that one time&lt;/em&gt; archive, portfolio, and personal web presence.</subtitle>
 
@@ -28,6 +28,70 @@
 
 	<generator uri="http://jekyllrb.com" version="3.9.3">Jekyll</generator>
 
+	
+		<entry>
+			<id>https://nickaroneseno.com/web/software/server/update-portainer/</id>
+			<title>Portainer Updates</title>
+			<link href="https://nickaroneseno.com/web/software/server/update-portainer/" rel="alternate" type="text/html" title="Portainer Updates" />
+			<updated>2025-04-19T08:00:01-06:00</updated>
+
+			
+				
+				<author>
+					
+						<name>Nick</name>
+					
+					
+						<email>admin (at) nickaroneseno (dot) com</email>
+					
+					
+						<uri>https://nickaroneseno.com/</uri>
+					
+				</author>
+			
+			<summary>Specific steps for pulling Portainer </summary>
+			<content type="html" xml:base="https://nickaroneseno.com/web/software/server/update-portainer/">&lt;p&gt;Portainer doesn’t contain an update mechanism built in (it is a docker container itself after all). Here’s how to simply update the instance:&lt;/p&gt;
+
+&lt;p&gt;Make a portainer database backup!
+You can find this under Settings:General:Download backup file. The option to backup the configuration is at the very bottom.
+&lt;img src=&quot;/assets/images/guides/portainer_backup.jpg&quot; alt=&quot;portainerback&quot; /&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Portainer backup location.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Pull the latest Portainer image: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;docker pull portainer/portainer-ce:latest&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Identify the Portainer container ID: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;docker container ls&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Stop the container: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;docker stop &amp;lt;ID&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Run from the new image: 
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;docker run -d -p 9000:9000 --restart always -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer-ce:latest&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Finally, upload the portainer backup.&lt;/p&gt;
+</content>
+
+			
+				<category term="web" />
+			
+				<category term="software" />
+			
+				<category term="server" />
+			
+			
+				<category term="software" />
+			
+				<category term="web" />
+			
+				<category term="self-host" />
+			
+				<category term="portainer" />
+			
+				<category term="docker" />
+			
+
+			<published>2025-04-19T08:00:01-06:00</published>
+		</entry>
 	
 		<entry>
 			<id>https://nickaroneseno.com/web/software/server/streaming-media/</id>
