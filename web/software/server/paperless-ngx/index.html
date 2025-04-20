@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Portainer Updates</title>
+	<title>Paperless-NGX</title>
 
     <link rel="stylesheet" type="text/css" href="https://nickaroneseno.com/assets/css/styles_feeling_responsive.css">
 
@@ -26,19 +26,19 @@
 
 
 	<!-- Search Engine Optimization -->
-	<meta name="description" content="Specific steps for pulling Portainer">
+	<meta name="description" content="Your Digital Filing Cabinet">
 	
 	
 	
 	
 	
-	<link rel="canonical" href="https://nickaroneseno.com/web/software/server/update-portainer/">
+	<link rel="canonical" href="https://nickaroneseno.com/web/software/server/paperless-ngx/">
 
 
 	<!-- Facebook Open Graph -->
-	<meta property="og:title" content="Portainer Updates">
-	<meta property="og:description" content="Specific steps for pulling Portainer">
-	<meta property="og:url" content="https://nickaroneseno.com/web/software/server/update-portainer/">
+	<meta property="og:title" content="Paperless-NGX">
+	<meta property="og:description" content="Your Digital Filing Cabinet">
+	<meta property="og:url" content="https://nickaroneseno.com/web/software/server/paperless-ngx/">
 	<meta property="og:locale" content="en_EN">
 	<meta property="og:type" content="website">
 	<meta property="og:site_name" content="Nick Aroneseno">
@@ -297,37 +297,132 @@
 
 				<div itemprop="name">
 					
-					<h1>Portainer Updates</h1>
+					<h1>Paperless-NGX</h1>
 				</div>
 			</header>
 
 
 			
 			<p class="teaser" itemprop="description">
-				Specific steps for pulling Portainer 
+				Your Digital Filing Cabinet
 			</p>
 			
 
 			<div itemprop="articleSection">
-			<p>Portainer doesn’t contain an update mechanism built in (it is a docker container itself after all). Here’s how to simply update the instance:</p>
+			<div class="panel radius">
+  <p id="toc"><strong>Table of Contents</strong></p>
+<ul id="markdown-toc">
+  <li><a href="#intro" id="markdown-toc-intro">Intro</a></li>
+  <li><a href="#prep" id="markdown-toc-prep">Prep</a></li>
+  <li><a href="#install" id="markdown-toc-install">Install</a></li>
+  <li><a href="#references" id="markdown-toc-references">References</a></li>
+</ul>
 
-<p>Make a portainer database backup!
-You can find this under Settings:General:Download backup file. The option to backup the configuration is at the very bottom.
-<img src="/assets/images/guides/portainer_backup.jpg" alt="portainerback" /></p>
-<blockquote>
-  <p>Portainer backup location.</p>
-</blockquote>
+</div>
 
-<p>Pull the latest Portainer image: <code class="language-plaintext highlighter-rouge">docker pull portainer/portainer-ce:latest</code></p>
+<h1 id="intro">Intro</h1>
+<p>Dealing with paper is so last century. During my self-hosted journey, I recently came across the <a href="https://docs.paperless-ngx.com">paperless-ngx</a> project. It claims to used advanced OCR and smart tagging to help you declutter, or digitize all of your paper documents. Another appealing point is being able to securely store these files <em>and</em> have access to them wherever I am, something you cannot do with traditional filing cabinets.</p>
 
-<p>Identify the Portainer container ID: <code class="language-plaintext highlighter-rouge">docker container ls</code></p>
+<h1 id="prep">Prep</h1>
+<p>I will be utilizing docker to run paperless, but will not be hosting the actual files there. I have a NAS for that. So, to start, create a share on your NAS just for paperless. I named mine paperless. It’s very creative.</p>
 
-<p>Stop the container: <code class="language-plaintext highlighter-rouge">docker stop &lt;ID&gt;</code></p>
+<p>Next, create a new user and/or group for the docker container to be able to access the share.</p>
 
-<p>Run from the new image: 
-<code class="language-plaintext highlighter-rouge">docker run -d -p 9000:9000 --restart always -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer-ce:latest</code></p>
+<p>Now, create folders for the paperless server to access:</p>
+<ul>
+  <li>data - where data will be stored (configs, etc)</li>
+  <li>media - where the actual files will be saved</li>
+  <li>consume - a directory that will be monitored by the service to auto-import documents for processing</li>
+</ul>
 
-<p>Finally, upload the portainer backup.</p>
+<p>Now, on your docker host, edit fstab (/etc/fstab) to create mounts to tie back to the NAS:
+<code class="language-plaintext highlighter-rouge">//NAS_IP/share/path /mnt/paperless/data cifs x-systemd.automount,dir_mode=0777,creds=.paperlesscreds 0 0</code></p>
+
+<p>Add two more lines, one each for media and consume. Don’t forget to actually create the mount directories (<code class="language-plaintext highlighter-rouge">mkdir paperless</code>, etc)!</p>
+
+<p>For the credentials file, create a file using nano or another editor in ~ (your home) with the same name as above with the following in it:</p>
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="nv">user</span><span class="o">=</span>USERNAME
+<span class="nv">pass</span><span class="o">=</span>PASSWORD
+<span class="nv">directory</span><span class="o">=</span>WORKGROUP</code></pre></figure>
+
+<p>Write out the file and exit. Next, <code class="language-plaintext highlighter-rouge">chown</code> it to <code class="language-plaintext highlighter-rouge">600</code>.</p>
+
+<p>Now, mount the new shares using <code class="language-plaintext highlighter-rouge">mount -a</code> and get ready to compose paperless itself.</p>
+
+<h1 id="install">Install</h1>
+<p>I used docker-compose to create the stack for paperless, as it also depends on a database and a data platform.</p>
+
+<p>Here is my compose:</p>
+
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">services</span><span class="pi">:</span>
+  <span class="na">broker</span><span class="pi">:</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">docker.io/library/redis:7</span>
+    <span class="na">restart</span><span class="pi">:</span> <span class="s">unless-stopped</span>
+    <span class="na">volumes</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">redisdata:/data</span>
+  
+  <span class="na">db</span><span class="pi">:</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">docker.io/library/postgres:17</span>
+    <span class="na">restart</span><span class="pi">:</span> <span class="s">unless-stopped</span>
+    <span class="na">volumes</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">pgdata:/var/lib/postgresql/data</span>
+    <span class="na">environment</span><span class="pi">:</span>
+      <span class="na">POSTGRES_DB</span><span class="pi">:</span> <span class="s">paperless</span>
+      <span class="na">POSTGRES_USER</span><span class="pi">:</span> <span class="s">paperless</span>
+      <span class="na">POSTGRES_PASSWORD</span><span class="pi">:</span> <span class="s">paperless</span>
+  
+  <span class="na">webserver</span><span class="pi">:</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">ghcr.io/paperless-ngx/paperless-ngx:latest</span>
+    <span class="na">restart</span><span class="pi">:</span> <span class="s">unless-stopped</span>
+    <span class="na">depends_on</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">db</span>
+      <span class="pi">-</span> <span class="s">broker</span>
+    <span class="na">ports</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">8010:8000"</span>
+    <span class="na">volumes</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">/mnt/paperless/data:/usr/src/paperless/data</span>
+      <span class="pi">-</span> <span class="s">/mnt/paperless/media:/usr/src/paperless/media</span>
+      <span class="pi">-</span> <span class="s">./export:/usr/src/paperless/export</span>
+      <span class="pi">-</span> <span class="s">/mnt/paperless/consume:/usr/src/paperless/consume</span>
+    <span class="na">environment</span><span class="pi">:</span>
+      <span class="na">PAPERLESS_REDIS</span><span class="pi">:</span> <span class="s">redis://broker:6379</span>
+      <span class="na">PAPERLESS_DBHOST</span><span class="pi">:</span> <span class="s">db</span>
+    <span class="na">env_file</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">stack.env</span>
+
+<span class="na">volumes</span><span class="pi">:</span>
+  <span class="na">paperless_data</span><span class="pi">:</span>
+  <span class="na">paperless_media</span><span class="pi">:</span>
+  <span class="na">pgdata</span><span class="pi">:</span>
+  <span class="na">redisdata</span><span class="pi">:</span></code></pre></figure>
+
+<p>I also have these environment variables from stack.env:
+<code class="language-plaintext highlighter-rouge">COMPOSE_PROJECT_NAME=paperless</code></p>
+
+<p>and from docker-compose.env:</p>
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="nv">USERMAP_UID</span><span class="o">=</span>0
+<span class="nv">USERMAP_GID</span><span class="o">=</span>0
+<span class="nv">PAPERLESS_TIME_ZONE</span><span class="o">=</span>America/Denver
+<span class="nv">PAPERLESS_OCR_LANGUAGE</span><span class="o">=</span>eng
+<span class="nv">PAPERLESS_CONSUMER_RECURSIVE</span><span class="o">=</span><span class="nb">true
+</span><span class="nv">PAPERLESS_CONSUMER_ENABLE_COLLATE_DOUBLE_SIDED</span><span class="o">=</span><span class="nb">true
+</span><span class="nv">PAPERLESS_CONSUMER_COLLATE_DOUBLE_SIDED_SUBDIR_NAME</span><span class="o">=</span>double
+<span class="nv">PAPERLESS_CONSUMER_COLLATE_DOUBLE_SIDED_TIFF_SUPPORT</span><span class="o">=</span><span class="nb">true
+</span><span class="nv">PAPERLESS_CONSUMER_POLLING</span><span class="o">=</span>60</code></pre></figure>
+
+<p>Finally, on the docker host, <code class="language-plaintext highlighter-rouge">adduser paperless</code> to complete the install (note: I can’t remember if this last step was actually needed, or if I had already done it while banging my head against the 0/0 UID/GID problem).</p>
+
+<p>Why user and group IDs set to zero? Because I could not for the life of me get the permissions right with the IDs matching its actual user and group of 1001. So, root it is!</p>
+
+<h1 id="references">References</h1>
+<ul>
+  <li><a href="https://docs.paperless-ngx.com/setup/#docker_script">https://docs.paperless-ngx.com/setup/#docker_script</a></li>
+  <li><a href="https://github.com/paperless-ngx/paperless-ngx/tree/main/docker/compose">https://github.com/paperless-ngx/paperless-ngx/tree/main/docker/compose</a></li>
+  <li><a href="https://www.reddit.com/r/Paperlessngx/comments/1g2ovoi/paperless_docker_user_permissions_or_usermap/">https://www.reddit.com/r/Paperlessngx/comments/1g2ovoi/paperless_docker_user_permissions_or_usermap/</a></li>
+</ul>
+
 
 			</div>
 
@@ -343,23 +438,23 @@ You can find this under Settings:General:Download backup file. The option to bac
 				
 
 				
-				<time class="icon-calendar pr20" datetime="2025-04-19T08:00:01-06:00" itemprop="datePublished"> 2025-04-19</time>
+				<time class="icon-calendar pr20" datetime="2025-04-19T21:00:01-06:00" itemprop="datePublished"> 2025-04-19</time>
 				
 
 				<span class="icon-archive pr20"> WEB · SOFTWARE · SERVER</span>
 				<br />
 				<!-- This is where tags are generated. Add custom link to the tag page showing all articles by that specific tag. -->
-				<span class="pr20"><span class="icon-price-tag pr10"> <a href="https://nickaroneseno.com/tags/software.html">software</a></span> <span class="icon-price-tag pr10"> <a href="https://nickaroneseno.com/tags/web.html">web</a></span> <span class="icon-price-tag pr10"> <a href="https://nickaroneseno.com/tags/self-host.html">self-host</a></span> <span class="icon-price-tag pr10"> <a href="https://nickaroneseno.com/tags/portainer.html">portainer</a></span> <span class="icon-price-tag pr10"> <a href="https://nickaroneseno.com/tags/docker.html">docker</a></span> </span>
+				<span class="pr20"><span class="icon-price-tag pr10"> <a href="https://nickaroneseno.com/tags/software.html">software</a></span> <span class="icon-price-tag pr10"> <a href="https://nickaroneseno.com/tags/web.html">web</a></span> <span class="icon-price-tag pr10"> <a href="https://nickaroneseno.com/tags/self-host.html">self-host</a></span> <span class="icon-price-tag pr10"> <a href="https://nickaroneseno.com/tags/docker.html">docker</a></span> </span>
 			</p>
 
 			
 			<div id="post-nav" class="row">
 				
-				<div class="medium-5 columns"><a class="button small radius prev" href="https://nickaroneseno.com/web/software/server/streaming-media/">&laquo; Streaming Your Media</a></div><!-- /.small-4.columns -->
+				<div class="medium-5 columns"><a class="button small radius prev" href="https://nickaroneseno.com/web/software/server/update-portainer/">&laquo; Portainer Updates</a></div><!-- /.small-4.columns -->
 				
 				<div class="medium-2 columns text-center"><a class="button small radius expand" href="https://nickaroneseno.com/blog/archive/" title="Blog Archive">Archive</a></div><!-- /.small-4.columns -->
 				
-				<div class="medium-5 columns text-right"><a class="button small radius next" href="https://nickaroneseno.com/web/software/server/paperless-ngx/">Paperless-NGX &raquo;</a></div><!-- /.small-4.columns -->
+				<div class="medium-5 columns text-right"></div><!-- /.small-4.columns -->
 				
 			</div>
 			
