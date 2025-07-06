@@ -89,6 +89,8 @@ Going back to the Bash window, run `bundle install`. When we deploy, a different
 
 Assuming everything has gone right, you're ready to test your site locally by running `bundle exec jekyll serve`! It can be found at [http://localhost:4000/](http://localhost:4000/)
 
+To future Nick: when you want to update the site and you can't remember how: open a terminal where the site is hosted (e.g., 'portfolio', then run `bundle exec jekyll serve`. Upload the changed files under _site.)
+
 # Push it. Push it real good.
 Once you're happy with the content, don't forget to add, commit and push your files to the cloud. If you're not committing to your build branch (please don't), make a pull request and let GitHub handle the rest!
 

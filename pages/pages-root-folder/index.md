@@ -15,15 +15,15 @@ widget1:
   image: widget-1-302x182.jpg
   text: 'A look back at the project I developed for NREL that won two NI Engineering Impact awards.'
 widget2:
-  title: "VLANs and AirPlay"
-  url: 'https://nickaroneseno.com/network/vlan/UniFi-VLAN-&-IoT-AirPlay/'
+  title: "Ignik Sikumi"
+  url: 'https://nickaroneseno.com/engineering/software/kuparuk-alaska/'
   image: widget-2-302x182.jpg
-  text: 'VLANs and AirPlay - a UniFi case study into creating AirPlay and multicast support while maintaining segmented networks and security.'
+  text: 'A project from 2012 when I was on site in Deadhorse and Kuparuk, Alaska in the middle of Winter.'
 widget3:
-  title: "Welcome!"
-  url: "https://nickaroneseno.com/software/web/how-I-built-it/"
+  title: "Catio"
+  url: "https://nickaroneseno.com/woodworking/furniture/Catio/"
   image: widget-3-302x182.jpg
-  text: 'A guide on static site generation using Jekyll, custom domain forwarding, and hosting via GitHub Pages.'
+  text: 'The process of how I built a modular year-round catio for my spoiled feline.'
 # widget2:
 #   title: "Why use this theme?"
 #   url: 'http://phlow.github.io/feeling-responsive/info/'
