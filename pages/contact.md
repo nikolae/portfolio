@@ -11,6 +11,9 @@ If you need freelance engineering work, seeking a consult, or just want to say h
 `jobs (at) nickaroneseno (dot) com`
 
 For encrypted mail, here is my PGP key:
+
+<a href="https://raw.githubusercontent.com/nikolae/portfolio/61a4ccbd847edea2ad56e224114fda0d87938a7e/assets/publickey.jobs%40nickaroneseno.com.asc">publickey.jobs@nickaroneseno.com.asc</a>
+
 {% highlight PGP %}
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 
@@ -30,5 +33,6 @@ tAEAjo6KdCZMZphykQgl0M9awZ3YI+Qrhe355lYvaqq5hzgBALdra+XslpLM
 =V4qY
 -----END PGP PUBLIC KEY BLOCK-----
 {% endhighlight %}
+
 
 Or connect with me on [LinkedIn](https://www.linkedin.com/in/naroneseno)
